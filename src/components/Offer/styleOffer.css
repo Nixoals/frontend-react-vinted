@@ -1,0 +1,117 @@
+@import url('../../assets/fonts/stylesheet.css');
+
+
+
+:root{
+    --main-primary-color:#007782; 
+}
+.single-offer-background{
+    background-color: #F2F2F2;
+}
+
+
+.single-offer-wrapper{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 30px;
+    padding: 25px;
+}
+
+.single-offer-wrapper button{
+    color: white;
+    background-color: var(--main-primary-color);
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.single-offer-image{
+    max-width: 400px;
+    width: 100%;
+    
+    background-color: white;
+    border-radius: 7px;
+    
+}
+
+.single-offer-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 0.7;
+}
+
+.single-offer-description{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 400px;
+    aspect-ratio: 0.7;
+    width: 100%;
+    padding: 30px 20px;
+    background-color: white;
+    border-radius: 7px;
+}
+
+.single-offer-description h1{
+    font-size: 30px;
+    font-weight: 400;
+}
+.single-offer-description div{
+    width: 100%;
+}
+
+.single-offer-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    gap: 10px;
+
+}
+
+.single-offer-user img{
+    width: 35px;
+    height: 35px;
+    border: solid 1px black;
+    border-radius: 50%;
+    padding: 10px;
+    
+}
+
+.single-offer-description-details div{
+    display: flex;
+    justify-content: flex-start;
+    
+}
+
+.single-offer-description-details div span{
+    flex: 1;
+    
+}
+.single-offer-description-details div span:first-child{
+    color: rgb(117,117,117);
+    
+
+}
+
+.single-offer-description-details{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0 60px 0;
+    border-bottom: solid 1px gray;
+    gap: 7px;
+}
+
+.single-offer-user-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 70px 0;
+}
+
+.single-offer-user-wrapper h1{
+    font-size: 22px;
+    font-weight: 700;
+
+}

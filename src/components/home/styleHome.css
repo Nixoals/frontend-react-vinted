@@ -1,0 +1,147 @@
+@import url('../../assets/fonts/stylesheet.css');
+
+
+
+:root{
+    --main-primary-color:#007782;
+    --main-gray: #757575;
+}
+
+
+.hero{
+    position: relative;
+    object-fit: contain;
+    height: 500px;
+    margin-bottom: 30px;
+}
+
+.hero > img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+}
+
+.hero .hero-tear{
+    bottom: 0;
+    position: absolute;
+    z-index: 10;
+    
+}
+
+.card-sell-now{
+    height: 297px;
+    width: 382px;
+    top: 100px;
+    position: absolute;
+    background-color: white;
+    padding: 32px;
+    margin: 0 20px;
+    border-radius: 5px;
+}
+
+.card-sell-now h1{
+    width: 230px;
+    font-size: 34px;
+    font-family: "Font";
+    font-weight: normal;
+    margin-bottom: 32px;
+    line-height: 45px;
+}
+.card-sell-now button{
+    width: 100%;
+    height: 44px;
+    color: white;
+    background-color: var(--main-primary-color);
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 12px;
+}
+.card-sell-now button:hover, .card-sell-now p:hover{
+    cursor: pointer;
+}
+
+.card-sell-now p{
+    color: var(--main-primary-color);
+}
+
+.home-item-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    
+}
+.price-info{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+.price-info .info-icon{
+    color: gray;
+    height: 20px;
+}
+
+.home-items{
+    display: flex;
+    flex-direction: column;
+    padding: 0 8px 16px 8px;
+    /* max-height: 576px; */
+    max-width: 300px;
+    max-height: 600px;
+    flex: 1 1 200px;
+}
+
+.item-image-product{
+    height: 100%;
+    max-width: 300px;
+    overflow: hidden;
+}
+.home-items img{
+    max-width: 100%;
+    aspect-ratio:1/2;
+    object-fit: cover;
+    
+}
+
+.item-caption-left{
+    height: 66px;
+}
+
+.offer-title{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 8px;
+    height: 40px;
+}
+
+.offer-title img{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+
+}
+
+.lower-description{
+    color: var(--main-gray);
+    font-size: 12px;
+}
+
+.item-caption{
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-caption-right{
+    display: flex;
+    color: var(--main-gray);
+    font-size: 12px;
+    gap: 5px;
+    align-items: flex-start;
+}
+
+ .heart-icon{
+    font-size: 12px;
+}
