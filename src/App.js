@@ -14,7 +14,8 @@ import Sell from './components/Sell/Sell';
 
 function App() {
 	const [token, setToken] = useState(Cookies.get('token') || null);
-
+	const [loginVisible, setLoginVisible] = useState(false);
+	const [signupVisible, setSignupVisible] = useState(false);
 	const handleToken = (token) => {
 		if (token) {
 			setToken(token);
@@ -27,14 +28,17 @@ function App() {
 	return (
 		<>
 			<Router>
-				<Header handleToken={handleToken}></Header>
+				<Header handleToken={handleToken} setLoginVisible={setLoginVisible} setSignupVisible={setSignupVisible}></Header>
 				<Routes>
 					<Route path="/" element={<Home></Home>}></Route>
 					<Route path="/offer/:id" element={<Offer></Offer>}></Route>
-					<Route path="/login" element={<Login handleToken={handleToken}></Login>}></Route>
-					<Route path="/signup" element={<Signup handleToken={handleToken}></Signup>}></Route>
+					{/* <Route path="/login" element={<Login handleToken={handleToken}></Login>}></Route>
+					<Route path="/signup" element={<Signup handleToken={handleToken}></Signup>}></Route> */}
 					<Route path="/sell-items" element={<Sell token={token}></Sell>}></Route>
 				</Routes>
+				{loginVisible && <Login setLoginVisible={setLoginVisible}></Login>}
+				{signupVisible && <Signup setSignupVisible={setSignupVisible}></Signup>}
+				{/* <ModalUser loginVisible={loginVisible} setLoginVisible={setLoginVisible} signupVisible={signupVisible} setSignupVisible={setSignupVisible}></ModalUser> */}
 			</Router>
 		</>
 	);

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-const Login = ({ handleToken }) => {
+const Login = ({ handleToken, setLoginVisible }) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [alerte, setAlerte] = useState(false);
@@ -25,37 +25,47 @@ const Login = ({ handleToken }) => {
 	};
 	return (
 		<>
-			<div className="login-user-form">
-				<h1>Se connecter</h1>
-				<form
-					onSubmit={(event) => {
-						event.preventDefault();
-						handleSubmit();
-					}}
-				>
-					<input
-						onChange={(event) => {
-							setEmail(event.target.value);
+			<div className="user-signup-wrapper">
+				<div className="login-user-form">
+					<h1>Se connecter</h1>
+					<button
+						className="close-button-modal"
+						onClick={() => {
+							setLoginVisible(false);
 						}}
-						type="text"
-						placeholder="Adresse email"
-						value={email}
-					/>
-					<input
-						onChange={(event) => {
-							setPassword(event.target.value);
+					>
+						{/* <ion-icon name="close-circle-outline"></ion-icon> */}X
+					</button>
+					<form
+						onSubmit={(event) => {
+							event.preventDefault();
+							handleSubmit();
 						}}
-						type="password"
-						placeholder="Mot de passe"
-						value={password}
-					/>
-					<div className={alerte ? 'alerte-message' : 'alerte-message-hidden'}>
-						<p>L'adresse email ou le mot de passe est incorrect</p>
-					</div>
-					<input type="submit" value="Se connecter" />
+					>
+						<input
+							onChange={(event) => {
+								setEmail(event.target.value);
+							}}
+							type="text"
+							placeholder="Adresse email"
+							value={email}
+						/>
+						<input
+							onChange={(event) => {
+								setPassword(event.target.value);
+							}}
+							type="password"
+							placeholder="Mot de passe"
+							value={password}
+						/>
+						<div className={alerte ? 'alerte-message' : 'alerte-message-hidden'}>
+							<p>L'adresse email ou le mot de passe est incorrect</p>
+						</div>
+						<input type="submit" value="Se connecter" />
 
-					<Link to={'/signup'}> Pas encore de compte ? Inscris-toi !</Link>
-				</form>
+						<Link to={'/signup'}> Pas encore de compte ? Inscris-toi !</Link>
+					</form>
+				</div>
 			</div>
 		</>
 	);

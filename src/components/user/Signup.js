@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Signup = ({ handleToken }) => {
+const Signup = ({ handleToken, setSignupVisible }) => {
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -37,65 +37,75 @@ const Signup = ({ handleToken }) => {
 	};
 	return (
 		<>
-			<div className="user-signup-form">
-				<h1>S'inscrire</h1>
-				<form
-					onSubmit={(event) => {
-						event.preventDefault();
-						handleSubmit();
-					}}
-				>
-					<input
-						onChange={(event) => {
-							setUsername(event.target.value);
+			<div className="user-signup-wrapper">
+				<div className="user-signup-form">
+					<button
+						className="close-button-modal"
+						onClick={() => {
+							setSignupVisible(false);
 						}}
-						type="text"
-						value={username}
-						placeholder="Nom D'utilisateur"
-					/>
-					<input
-						onChange={(event) => {
-							setEmail(event.target.value);
+					>
+						{/* <ion-icon name="close-circle-outline"></ion-icon> */}X
+					</button>
+					<h1>S'inscrire</h1>
+					<form
+						onSubmit={(event) => {
+							event.preventDefault();
+							handleSubmit();
 						}}
-						type="email"
-						value={email}
-						placeholder="Email"
-					/>
-					<input
-						onChange={(event) => {
-							setPassword(event.target.value);
-						}}
-						type="password"
-						value={password}
-						placeholder="Mot de passe"
-					/>
-					<input
-						onChange={(event) => {
-							setConfirmPassword(event.target.value);
-						}}
-						type="password"
-						value={confirmPassword}
-						placeholder="conrfirmer le mot de passe"
-					/>
-					<div>
+					>
 						<input
-							onChange={() => {
-								setNewsletter(true);
+							onChange={(event) => {
+								setUsername(event.target.value);
 							}}
-							type="checkbox"
-							defaultChecked={newsletter}
-							value={newsletter}
+							type="text"
+							value={username}
+							placeholder="Nom D'utilisateur"
 						/>
-						<span> S'incrire à notre newsletter</span>
-					</div>
-					<div>
-						<p>En m'inscrivant je confirme avoir lu et accepté les Termes & Conditions et Politique de Confidentialité de Vinted. Je confirme avoir au moins 18 ans.</p>
-					</div>
-					<div className={alerte ? 'alerte-message' : 'alerte-message-hidden'}>
-						<p>{alerte}</p>
-					</div>
-					<input type="submit" value="S'inscrire" />
-				</form>
+						<input
+							onChange={(event) => {
+								setEmail(event.target.value);
+							}}
+							type="email"
+							value={email}
+							placeholder="Email"
+						/>
+						<input
+							onChange={(event) => {
+								setPassword(event.target.value);
+							}}
+							type="password"
+							value={password}
+							placeholder="Mot de passe"
+						/>
+						<input
+							onChange={(event) => {
+								setConfirmPassword(event.target.value);
+							}}
+							type="password"
+							value={confirmPassword}
+							placeholder="conrfirmer le mot de passe"
+						/>
+						<div>
+							<input
+								onChange={() => {
+									setNewsletter(true);
+								}}
+								type="checkbox"
+								defaultChecked={newsletter}
+								value={newsletter}
+							/>
+							<span> S'incrire à notre newsletter</span>
+						</div>
+						<div>
+							<p>En m'inscrivant je confirme avoir lu et accepté les Termes & Conditions et Politique de Confidentialité de Vinted. Je confirme avoir au moins 18 ans.</p>
+						</div>
+						<div className={alerte ? 'alerte-message' : 'alerte-message-hidden'}>
+							<p>{alerte}</p>
+						</div>
+						<input type="submit" value="S'inscrire" />
+					</form>
+				</div>
 			</div>
 		</>
 	);

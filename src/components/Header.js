@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 
-const Header = ({ handleToken }) => {
+const Header = ({ handleToken, setLoginVisible, setSignupVisible }) => {
 	const token = Cookies.get('token');
 	const navigate = useNavigate();
 	return (
@@ -30,18 +30,35 @@ const Header = ({ handleToken }) => {
 						</>
 					) : (
 						<>
-							<Link to="/signup">
-								<button>S'inscrire</button>
-							</Link>
-							<Link to="/login">
-								<button>Se connecter</button>
-							</Link>
+							<button
+								onClick={() => {
+									setSignupVisible(true);
+								}}
+							>
+								S'inscrire
+							</button>
+
+							<button
+								onClick={() => {
+									setLoginVisible(true);
+								}}
+							>
+								Se connecter
+							</button>
 						</>
 					)}
 
-					<Link to={token ? '/sell-items' : '/login'}>
-						<button>Vendre des articles</button>
-					</Link>
+					<button
+						onClick={() => {
+							if (token) {
+								navigate('/sell-items');
+							} else {
+								setLoginVisible(true);
+							}
+						}}
+					>
+						Vendre des articles
+					</button>
 				</nav>
 			</header>
 		</>
