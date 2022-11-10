@@ -1,11 +1,15 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
+import { Link } from 'react-router-dom';
+
 import heroImage from '../../assets/images/hero.jpg';
 import tear from '../../assets/images/tear.svg';
-import axios from 'axios';
-
-import { useEffect, useState } from 'react';
 import Offers from './Offers';
 
 const Hero = () => {
+	const token = Cookies.get('token');
+
 	return (
 		<>
 			<section className="hero">
@@ -15,7 +19,11 @@ const Hero = () => {
 				</div>
 				<div className="card-sell-now">
 					<h1>Prêts à faire du tri dans vos placards ?</h1>
-					<button>Vends maintenant</button>
+
+					<Link to={token ? '/sell-items' : '/login'}>
+						<button>Vends maintenant</button>
+					</Link>
+
 					<p>Découvrir comment ça marche</p>
 				</div>
 			</section>
@@ -49,7 +57,7 @@ const Home = () => {
 			</main>
 		</>
 	) : (
-		<div>...downloading</div>
+		<div></div>
 	);
 };
 

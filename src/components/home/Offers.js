@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import avatar from '../../assets/images/avatar.png';
 
 const Offers = ({ item }) => {
-	const { owner, product_description, product_details, product_image, product_name, product_price, _id } = item;
-	console.log(owner, product_description, product_details, product_image, product_name, product_price, _id);
+	const { owner, product_details, product_image, product_price, _id } = item;
 	// console.log(owner.account.username, owner.account.avatar);
 
 	return (

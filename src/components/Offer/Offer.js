@@ -6,7 +6,6 @@ const Offer = () => {
 
 	const [isLoading, setIsLoading] = useState(true);
 	const [data, setData] = useState();
-	console.log(isLoading);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -29,26 +28,16 @@ const Offer = () => {
 					<div className="single-offer-description">
 						<h1>{data.product_price} €</h1>
 						<div className="single-offer-description-details">
-							<div>
-								<span>MARQUE</span>
-								<span>{data.product_details[0].Marque}</span>
-							</div>
-							<div>
-								<span>TAILLE </span>
-								<span>{data.product_details[1].TAILLE}</span>
-							</div>
-							<div>
-								<span>ETAT </span>
-								<span>{data.product_details[2].État}</span>
-							</div>
-							<div>
-								<span>COULEUR </span>
-								<span>{data.product_details[3].COULEUR}</span>
-							</div>
-							<div>
-								<span>EMPLACEMENT </span>
-								<span>{data.product_details[4].EMPLACEMENT}</span>
-							</div>
+							{data.product_details.map((detail, index) => {
+								const objectKey = Object.keys(detail)[0];
+
+								return (
+									<div key={index}>
+										<span>{objectKey}</span>
+										<span>{detail[objectKey]}</span>
+									</div>
+								);
+							})}
 						</div>
 						<div className="single-offer-user-wrapper">
 							<h1>{data.product_name}</h1>

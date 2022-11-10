@@ -1,0 +1,33 @@
+@import url('../../assets/fonts/stylesheet.css');
+
+
+.login-user-form, .user-signup-form{
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: auto;
+}
+
+.login-user-form form, .user-signup-form form{
+    display: flex;
+    flex-direction: column;
+    max-width: 275px;
+    gap: 20px;
+
+}
+
+.alerte-message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    color: red;
+    font-size: 12px;
+    visibility: visible;
+}
+
+.alerte-message-hidden{
+    height: 20px;
+    visibility: hidden;
+}
+
