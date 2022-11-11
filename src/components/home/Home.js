@@ -58,7 +58,7 @@ const Home = ({ setLoginVisible }) => {
 		<>
 			<main>
 				<Hero setLoginVisible={setLoginVisible}></Hero>
-				<h1>Articles populaires</h1>
+				<h1 className="title-home-offers">Articles populaires</h1>
 				<section className="home-item-wrapper">
 					{data.offers.map((item) => {
 						return <Offers key={item._id} item={item}></Offers>;

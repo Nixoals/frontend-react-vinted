@@ -65,10 +65,19 @@
     color: var(--main-primary-color);
 }
 
+.title-home-offers{
+    font-size: 24px;
+    padding: 0 28px;
+    margin: 25px 0;
+}
+
 .home-item-wrapper{
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
+    max-width: 1224px;
+    margin: auto;
+    padding: 0 20px;
     
 }
 .price-info{

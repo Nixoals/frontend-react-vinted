@@ -8,14 +8,18 @@ const Signup = ({ handleToken, setSignupVisible, setLoginVisible }) => {
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
 	const [newsletter, setNewsletter] = useState(false);
+	const [confirmTerms, setConfirmTerms] = useState(false);
 	const [alerte, setAlerte] = useState(false);
 
 	const navigate = useNavigate();
 
 	const handleSubmit = async () => {
+		console.log(confirmTerms);
 		try {
 			if (!username || !password || !confirmPassword || !email) {
 				return setAlerte('Veuillez remplir tout les champs');
+			} else if (!confirmTerms) {
+				return setAlerte("Veuillez accepter les conditions d'utilisation");
 			} else if (password !== confirmPassword) {
 				return setAlerte('Confirmation de mot de passe différent');
 			} else if (username && email && password) {
@@ -50,46 +54,55 @@ const Signup = ({ handleToken, setSignupVisible, setLoginVisible }) => {
 					>
 						{/* <ion-icon name="close-circle-outline"></ion-icon> */}X
 					</button>
-					<h1>S'inscrire</h1>
+					<h1>Inscrits-toi avec ton email</h1>
 					<form
 						onSubmit={(event) => {
 							event.preventDefault();
 							handleSubmit();
 						}}
 					>
-						<input
-							onChange={(event) => {
-								setUsername(event.target.value);
-							}}
-							type="text"
-							value={username}
-							placeholder="Nom D'utilisateur"
-						/>
-						<input
-							onChange={(event) => {
-								setEmail(event.target.value);
-							}}
-							type="email"
-							value={email}
-							placeholder="Email"
-						/>
-						<input
-							onChange={(event) => {
-								setPassword(event.target.value);
-							}}
-							type="password"
-							value={password}
-							placeholder="Mot de passe"
-						/>
-						<input
-							onChange={(event) => {
-								setConfirmPassword(event.target.value);
-							}}
-							type="password"
-							value={confirmPassword}
-							placeholder="conrfirmer le mot de passe"
-						/>
 						<div>
+							<input
+								onChange={(event) => {
+									setUsername(event.target.value);
+								}}
+								type="text"
+								value={username}
+								placeholder="Nom d'utilisateur"
+							/>
+						</div>
+
+						<div>
+							<input
+								onChange={(event) => {
+									setEmail(event.target.value);
+								}}
+								type="email"
+								value={email}
+								placeholder="Email"
+							/>
+						</div>
+						<div>
+							<input
+								onChange={(event) => {
+									setPassword(event.target.value);
+								}}
+								type="password"
+								value={password}
+								placeholder="Mot de passe"
+							/>
+						</div>
+						<div>
+							<input
+								onChange={(event) => {
+									setConfirmPassword(event.target.value);
+								}}
+								type="password"
+								value={confirmPassword}
+								placeholder="conrfirmer le mot de passe"
+							/>
+						</div>
+						<div className="user-singup-terms">
 							<input
 								onChange={() => {
 									setNewsletter(true);
@@ -98,15 +111,23 @@ const Signup = ({ handleToken, setSignupVisible, setLoginVisible }) => {
 								defaultChecked={newsletter}
 								value={newsletter}
 							/>
-							<span> S'incrire à notre newsletter</span>
+							<p> Je souhaite recevoir par e-mail des offres personnalisées et les dernières mises à jour de Vinted. </p>
 						</div>
-						<div>
-							<p>En m'inscrivant je confirme avoir lu et accepté les Termes & Conditions et Politique de Confidentialité de Vinted. Je confirme avoir au moins 18 ans.</p>
+						<div className="user-singup-terms">
+							<input
+								onChange={() => {
+									setConfirmTerms(true);
+								}}
+								type="checkbox"
+								defaultChecked={confirmTerms}
+								value={confirmTerms}
+							/>
+							<p>En t'inscrivant tu confirmes avoir lu et accepté les Termes & Conditions et Politique de Confidentialité de Vinted. Je confirme avoir au moins 18 ans.</p>
 						</div>
 						<div className={alerte ? 'alerte-message' : 'alerte-message-hidden'}>
 							<p>{alerte}</p>
 						</div>
-						<input type="submit" value="S'inscrire" />
+						<input className="modal-submit-button" type="submit" value="Continuer" />
 					</form>
 				</div>
 			</div>

@@ -10,55 +10,61 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible }) => {
 		<>
 			<header>
 				<nav className="primary-nav">
-					<Link to="/">
-						<div>
-							<img src={logo} alt="" />
+					<div className="primary-nav-left">
+						<Link to="/">
+							<div className="logo">
+								<img src={logo} alt="" />
+							</div>
+						</Link>
+						<div className="nav-search-bar">
+							<ion-icon name="search-outline"></ion-icon>
+							<input type="text" placeholder="Rechercher des articles" />
 						</div>
-					</Link>
-					<input type="text" placeholder="Searched item" />
+					</div>
+					<div className="primary-nav-right">
+						{token ? (
+							<>
+								<button
+									onClick={() => {
+										handleToken(null);
+										navigate('/');
+									}}
+								>
+									Deconnexion
+								</button>
+							</>
+						) : (
+							<>
+								<button
+									onClick={() => {
+										setSignupVisible(true);
+									}}
+								>
+									S'inscrire
+								</button>
 
-					{token ? (
-						<>
-							<button
-								onClick={() => {
-									handleToken(null);
-									navigate('/');
-								}}
-							>
-								Deconnexion
-							</button>
-						</>
-					) : (
-						<>
-							<button
-								onClick={() => {
-									setSignupVisible(true);
-								}}
-							>
-								S'inscrire
-							</button>
+								<button
+									onClick={() => {
+										setLoginVisible(true);
+									}}
+								>
+									Se connecter
+								</button>
+							</>
+						)}
 
-							<button
-								onClick={() => {
+						<button
+							onClick={() => {
+								if (token) {
+									navigate('/sell-items');
+								} else {
 									setLoginVisible(true);
-								}}
-							>
-								Se connecter
-							</button>
-						</>
-					)}
-
-					<button
-						onClick={() => {
-							if (token) {
-								navigate('/sell-items');
-							} else {
-								setLoginVisible(true);
-							}
-						}}
-					>
-						Vendre des articles
-					</button>
+								}
+							}}
+						>
+							Vends tes articles
+						</button>
+					</div>
 				</nav>
 			</header>
 		</>

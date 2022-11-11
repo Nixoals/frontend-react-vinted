@@ -43,22 +43,26 @@ const Login = ({ handleToken, setLoginVisible, setSignupVisible }) => {
 							handleSubmit();
 						}}
 					>
-						<input
-							onChange={(event) => {
-								setEmail(event.target.value);
-							}}
-							type="text"
-							placeholder="Adresse email"
-							value={email}
-						/>
-						<input
-							onChange={(event) => {
-								setPassword(event.target.value);
-							}}
-							type="password"
-							placeholder="Mot de passe"
-							value={password}
-						/>
+						<div>
+							<input
+								onChange={(event) => {
+									setEmail(event.target.value);
+								}}
+								type="text"
+								placeholder="Adresse email"
+								value={email}
+							/>
+						</div>
+						<div>
+							<input
+								onChange={(event) => {
+									setPassword(event.target.value);
+								}}
+								type="password"
+								placeholder="Mot de passe"
+								value={password}
+							/>
+						</div>
 						<div className={alerte ? 'alerte-message' : 'alerte-message-hidden'}>
 							<p>L'adresse email ou le mot de passe est incorrect</p>
 						</div>
