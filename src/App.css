@@ -7,9 +7,9 @@
 
 }
 
-@import url('./components/Offer/styleOffer.css');
-@import url('./components/home/styleHome.css');
-@import url('./components/user/styleUserForm.css');
+@import url('./pages/OfferStyle.css');
+@import url('./pages/HomeStyle.css');
+@import url('./pages/UserFormStyle.css');
 
 :root{
     --main-primary-color:#007782; 

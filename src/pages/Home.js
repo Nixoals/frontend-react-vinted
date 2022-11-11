@@ -4,9 +4,9 @@ import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
-import heroImage from '../../assets/images/hero.jpg';
-import tear from '../../assets/images/tear.svg';
-import Offers from './Offers';
+import heroImage from '../assets/images/hero.jpg';
+import tear from '../assets/images/tear.svg';
+import Offers from '../components/Offers';
 
 const Hero = ({ setLoginVisible }) => {
 	const token = Cookies.get('token');

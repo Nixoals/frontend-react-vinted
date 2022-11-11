@@ -1,4 +1,4 @@
-@import url('../../assets/fonts/stylesheet.css');
+@import url('../assets/fonts/stylesheet.css');
 
 :root{
     --main-primary-color:#007782; 
@@ -106,15 +106,11 @@
     color: var(--main-gray);
 }
 
-
-
-
 .user-signup-form .user-singup-terms{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    /* height: 66px; */
     padding: 0;
    
 }

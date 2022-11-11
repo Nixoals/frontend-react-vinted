@@ -6,11 +6,11 @@ import Cookies from 'js-cookie';
 
 //Pages routes
 import Header from './components/Header';
-import Offer from './components/Offer/Offer';
-import Home from './components/home/Home';
-import Login from './components/user/Login';
-import Signup from './components/user/Signup';
-import Sell from './components/Sell/Sell';
+import Offer from './pages/Offer';
+import Home from './pages/Home';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import Sell from './pages/Sell';
 
 function App() {
 	const [token, setToken] = useState(Cookies.get('token') || null);

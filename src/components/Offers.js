@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import avatar from '../../assets/images/avatar.png';
+import avatar from '../assets/images/avatar.png';
 
 const Offers = ({ item }) => {
 	const { owner, product_details, product_image, product_price, _id } = item;
