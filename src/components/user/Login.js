@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
-const Login = ({ handleToken, setLoginVisible }) => {
+const Login = ({ handleToken, setLoginVisible, setSignupVisible }) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [alerte, setAlerte] = useState(false);
@@ -17,6 +17,7 @@ const Login = ({ handleToken, setLoginVisible }) => {
 
 			const token = response.data.token;
 			handleToken(token);
+			setLoginVisible(false);
 			navigate('/');
 		} catch (error) {
 			setAlerte(true);
@@ -63,7 +64,15 @@ const Login = ({ handleToken, setLoginVisible }) => {
 						</div>
 						<input type="submit" value="Se connecter" />
 
-						<Link to={'/signup'}> Pas encore de compte ? Inscris-toi !</Link>
+						<div
+							style={{ cursor: 'pointer' }}
+							onClick={() => {
+								setLoginVisible(false);
+								setSignupVisible(true);
+							}}
+						>
+							Pas encore de compte ? Inscris-toi !
+						</div>
 					</form>
 				</div>
 			</div>

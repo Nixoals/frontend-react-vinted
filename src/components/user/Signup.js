@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Signup = ({ handleToken, setSignupVisible }) => {
+const Signup = ({ handleToken, setSignupVisible, setLoginVisible }) => {
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -14,18 +14,21 @@ const Signup = ({ handleToken, setSignupVisible }) => {
 
 	const handleSubmit = async () => {
 		try {
-			if (username && email && password === confirmPassword && password) {
+			if (!username || !password || !confirmPassword || !email) {
+				return setAlerte('Veuillez remplir tout les champs');
+			} else if (password !== confirmPassword) {
+				return setAlerte('Confirmation de mot de passe différent');
+			} else if (username && email && password) {
 				const url = 'https://site--vinted-backend--gsmxcbzt8tzm.code.run/user/signup';
 				// const url = 'http://localhost:4000/user/signup';
 				const data = { username, email, password, newsletter, avatar: 'picture' };
-				console.log(data);
+
 				const response = await axios.post(url, data);
 				const token = response.data.token;
-
+				setSignupVisible(false);
 				handleToken(token);
-				navigate('/');
-			} else {
-				setAlerte('Veuillez remplir tout les champs');
+
+				return navigate('/');
 			}
 		} catch (error) {
 			const message = error.response.data.message;

@@ -1,14 +1,16 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import heroImage from '../../assets/images/hero.jpg';
 import tear from '../../assets/images/tear.svg';
 import Offers from './Offers';
 
-const Hero = () => {
+const Hero = ({ setLoginVisible }) => {
 	const token = Cookies.get('token');
+	const navigate = useNavigate();
 
 	return (
 		<>
@@ -20,9 +22,17 @@ const Hero = () => {
 				<div className="card-sell-now">
 					<h1>Prêts à faire du tri dans vos placards ?</h1>
 
-					<Link to={token ? '/sell-items' : '/login'}>
-						<button>Vends maintenant</button>
-					</Link>
+					<button
+						onClick={() => {
+							if (token) {
+								navigate('/sell-items');
+							} else {
+								setLoginVisible(true);
+							}
+						}}
+					>
+						Vends maintenant
+					</button>
 
 					<p>Découvrir comment ça marche</p>
 				</div>
@@ -31,7 +41,7 @@ const Hero = () => {
 	);
 };
 
-const Home = () => {
+const Home = ({ setLoginVisible }) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [data, setData] = useState();
 
@@ -47,7 +57,7 @@ const Home = () => {
 	return !isLoading ? (
 		<>
 			<main>
-				<Hero></Hero>
+				<Hero setLoginVisible={setLoginVisible}></Hero>
 				<h1>Articles populaires</h1>
 				<section className="home-item-wrapper">
 					{data.offers.map((item) => {
