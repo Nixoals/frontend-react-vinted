@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 import RangeSet from './RangeSet';
 
 const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, setFilterObj, setFilter }) => {
+	//body Modal
+
 	const token = Cookies.get('token');
 	const [orderPrice, setOrderPrice] = useState(true);
 	const [range, setRange] = useState([10, 100]);
@@ -100,6 +102,7 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 								<button
 									onClick={() => {
 										setSignupVisible(true);
+										document.body.className = 'body-modal';
 									}}
 								>
 									S'inscrire
@@ -108,6 +111,7 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 								<button
 									onClick={() => {
 										setLoginVisible(true);
+										document.body.className = 'body-modal';
 									}}
 								>
 									Se connecter
@@ -121,6 +125,7 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 									navigate('/sell-items');
 								} else {
 									setLoginVisible(true);
+									document.body.className = 'body-modal';
 								}
 							}}
 						>

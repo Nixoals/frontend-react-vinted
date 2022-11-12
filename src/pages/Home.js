@@ -28,6 +28,7 @@ const Hero = ({ setLoginVisible }) => {
 								navigate('/sell-items');
 							} else {
 								setLoginVisible(true);
+								document.body.className = 'body-modal';
 							}
 						}}
 					>

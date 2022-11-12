@@ -15,6 +15,9 @@
     --main-gray: #757575;
 }
 
+.body-modal{
+    overflow-y: hidden;
+}
 
 header{
     height: 120px;

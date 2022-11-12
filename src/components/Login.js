@@ -33,6 +33,7 @@ const Login = ({ handleToken, setLoginVisible, setSignupVisible }) => {
 						className="close-button-modal"
 						onClick={() => {
 							setLoginVisible(false);
+							document.body.classList.toggle('body-modal');
 						}}
 					>
 						{/* <ion-icon name="close-circle-outline"></ion-icon> */}X
