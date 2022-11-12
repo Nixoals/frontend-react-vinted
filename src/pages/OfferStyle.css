@@ -10,12 +10,13 @@
     background-color: #F2F2F2;
 }
 
-
 .single-offer-wrapper{
     display: flex;
     justify-content: space-evenly;
     gap: 30px;
     padding: 25px;
+    max-width: 1024px;
+    margin: auto;
 }
 
 .single-offer-wrapper button{

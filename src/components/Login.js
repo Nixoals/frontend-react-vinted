@@ -66,7 +66,7 @@ const Login = ({ handleToken, setLoginVisible, setSignupVisible }) => {
 						<div className={alerte ? 'alerte-message' : 'alerte-message-hidden'}>
 							<p>L'adresse email ou le mot de passe est incorrect</p>
 						</div>
-						<input type="submit" value="Se connecter" />
+						<input className="modal-submit-button" type="submit" value="Se connecter" />
 
 						<div
 							style={{ cursor: 'pointer' }}

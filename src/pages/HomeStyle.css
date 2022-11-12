@@ -1,12 +1,9 @@
 @import url('../assets/fonts/stylesheet.css');
 
-
-
 :root{
     --main-primary-color:#007782;
     --main-gray: #757575;
 }
-
 
 .hero{
     position: relative;

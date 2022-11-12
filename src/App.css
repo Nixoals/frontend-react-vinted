@@ -13,11 +13,12 @@
 
 :root{
     --main-primary-color:#007782; 
+    --main-gray: #757575;
 }
 
 
 header{
-    height: 60px;
+    height: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,17 +52,25 @@ header{
     height: 100%;
 }
 
-.nav-search-bar{
-    border:none;
-    border-radius: 5px;
-    background-color: #F5F6F7;
+.nav-search-bar-filter{
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 10px;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.nav-search-bar{
+    display: flex;
     gap: 15px;
     height: 40px;
     width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+    background-color: rgb(230, 230, 230);
+    border-radius: 5px;
+    height: 30px;
+    margin: 10px 0;
 }
 
 .nav-search-bar input{
@@ -75,7 +84,7 @@ header{
 .primary-nav-right{
     display: flex;
     width: 430px;
-    height: 100%;
+    height: 60px;
     padding: 15px 0;
     gap: 10px;  
 }
@@ -93,4 +102,55 @@ header{
 .primary-nav-right button:last-child{
     color: white;
     background-color: var(--main-primary-color);
+}
+
+.header-filters{
+    display: flex;
+    width: 100%;
+}
+
+.price-sorting{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+}
+
+.filter-price{
+    height: 20px;
+    width: 42px;
+    border-radius: 20px;
+    background-color: var(--main-primary-color);
+}
+.filter-price .normal{
+    position: absolute;
+    background-color: white;
+    height: 18px;
+    width: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: solid 1px #666;
+    translate: 0px 1px;
+    transform: rotate(180deg);
+    transition: translate 0.2s ease;
+}
+.filter-price .reverse{
+    position: absolute;
+    background-color: white;
+    height: 18px;
+    width: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: solid 1px #666;
+    translate: 24px 1px;
+    transform: rotate(0deg);
+    transition: translate 0.2s ease;
+}
+
+.slider-range{
+    width: 300px;
 }

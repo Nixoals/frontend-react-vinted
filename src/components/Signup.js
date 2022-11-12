@@ -99,7 +99,7 @@ const Signup = ({ handleToken, setSignupVisible, setLoginVisible }) => {
 								}}
 								type="password"
 								value={confirmPassword}
-								placeholder="conrfirmer le mot de passe"
+								placeholder="confirmer le mot de passe"
 							/>
 						</div>
 						<div className="user-singup-terms">

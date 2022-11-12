@@ -2,12 +2,12 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
 
 import heroImage from '../assets/images/hero.jpg';
 import tear from '../assets/images/tear.svg';
 import Offers from '../components/Offers';
 
+//Hero Component
 const Hero = ({ setLoginVisible }) => {
 	const token = Cookies.get('token');
 	const navigate = useNavigate();
@@ -41,33 +41,45 @@ const Hero = ({ setLoginVisible }) => {
 	);
 };
 
-const Home = ({ setLoginVisible }) => {
+//Main Home Content
+const Home = ({ setLoginVisible, filterObj, filter, setFilter }) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [data, setData] = useState();
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await axios.get('https://site--vinted-backend--gsmxcbzt8tzm.code.run/offer');
+			const newFilterObj = [...filterObj];
+			// const response = await axios.get('https://site--vinted-backend--gsmxcbzt8tzm.code.run/offer', filterObj);
+			const url = `https://site--vinted-backend--gsmxcbzt8tzm.code.run/offer`;
+			// const url = `http://localhost:8080/offer`;
+
+			const response = await axios.get(url, { params: newFilterObj[0] });
 			const data = response.data;
+
 			setData(data);
 			setIsLoading(false);
+			setFilter(false);
 		};
 		fetchData();
-	}, []);
-	return !isLoading ? (
+	}, [filter, filterObj]); //define State for filter
+	return (
 		<>
 			<main>
 				<Hero setLoginVisible={setLoginVisible}></Hero>
 				<h1 className="title-home-offers">Articles populaires</h1>
-				<section className="home-item-wrapper">
-					{data.offers.map((item) => {
-						return <Offers key={item._id} item={item}></Offers>;
-					})}
-				</section>
+				{!filter && !isLoading ? (
+					<div>
+						<section className="home-item-wrapper">
+							{data.offers.map((item) => {
+								return <Offers key={item._id} item={item}></Offers>;
+							})}
+						</section>
+					</div>
+				) : (
+					<div></div>
+				)}
 			</main>
 		</>
-	) : (
-		<div></div>
 	);
 };
 
