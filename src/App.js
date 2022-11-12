@@ -20,7 +20,7 @@ function App() {
 	const [loginVisible, setLoginVisible] = useState(false);
 	const [signupVisible, setSignupVisible] = useState(false);
 	const [filter, setFilter] = useState(false);
-	const [filterObj, setFilterObj] = useState([{ title: '', priceMin: 0, priceMax: 200, sort: 'price-asc', page: 1, resultNumber: 1000 }]);
+	const [filterObj, setFilterObj] = useState([{ title: '', priceMin: null, priceMax: null, sort: 'price-asc', page: 1, resultNumber: 1000 }]);
 
 	const handleToken = (token) => {
 		if (token) {

@@ -55,19 +55,21 @@ const Home = ({ setLoginVisible, filterObj, filter, setFilter }) => {
 
 			const response = await axios.get(url, { params: newFilterObj[0] });
 			const data = response.data;
+			console.log('dataFetched');
 
 			setData(data);
 			setIsLoading(false);
 			setFilter(false);
 		};
 		fetchData();
-	}, [filter, filterObj]); //define State for filter
+	}, [filter, filterObj, setFilter]); //define State for filter
+
 	return (
 		<>
 			<main>
 				<Hero setLoginVisible={setLoginVisible}></Hero>
 				<h1 className="title-home-offers">Articles populaires</h1>
-				{!filter && !isLoading ? (
+				{!isLoading ? (
 					<div>
 						<section className="home-item-wrapper">
 							{data.offers.map((item) => {

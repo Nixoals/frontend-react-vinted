@@ -6,17 +6,26 @@ import { useState } from 'react';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { Range, getTrackBackground } from 'react-range';
+import RangeSet from './RangeSet';
 
 const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, setFilterObj, setFilter }) => {
 	const token = Cookies.get('token');
 	const [orderPrice, setOrderPrice] = useState(true);
-	const [values, setValues] = useState([10, 100]);
-	const COLORS = ['#ccc', '#007782', '#ccc'];
+	const [range, setRange] = useState([10, 100]);
 
 	const navigate = useNavigate();
 
-	const handleFilterPrice = () => {
+	const handlePriceRange = (values) => {
+		setRange(values);
+		const newFilterObj = [...filterObj];
+		newFilterObj[0].priceMin = range[0];
+		newFilterObj[0].priceMax = range[1];
+
+		setFilterObj(newFilterObj);
+		setFilter(true);
+	};
+
+	const handleFilterPriceOrder = () => {
 		setOrderPrice(!orderPrice);
 		const order = orderPrice ? 'price-desc' : 'price-asc';
 		const newFilterObj = [...filterObj];
@@ -57,87 +66,19 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 							</div>
 							<div className="header-filters">
 								<div className="price-sorting">
-									<h3>Trier par prix</h3>
+									<h3>Trier par prix :</h3>
 									<div
 										onClick={() => {
-											handleFilterPrice();
+											handleFilterPriceOrder();
 										}}
 										className="filter-price"
 									>
 										<span className={orderPrice ? 'normal' : 'reverse'}>⇣</span>
 									</div>
+									<h3>Prix entre :</h3>
 								</div>
 								<div className={'slider-range'}>
-									<Range
-										values={values}
-										step={1}
-										min={0}
-										max={500}
-										rtl={false}
-										onChange={(values) => {
-											setValues(values);
-										}}
-										renderTrack={({ props, children }) => (
-											<div
-												onMouseDown={props.onMouseDown}
-												onTouchStart={props.onTouchStart}
-												style={{
-													...props.style,
-													height: '36px',
-													display: 'flex',
-													width: '100%',
-												}}
-											>
-												<div
-													ref={props.ref}
-													style={{
-														height: '5px',
-														width: '100%',
-														borderRadius: '4px',
-														background: getTrackBackground({
-															values,
-															colors: COLORS,
-															min: 0,
-															max: 500,
-															rtl: false,
-														}),
-														alignSelf: 'center',
-													}}
-												>
-													{children}
-												</div>
-											</div>
-										)}
-										renderThumb={({ index, props, isDragged }) => (
-											<div
-												{...props}
-												style={{
-													...props.style,
-													height: '15px',
-													width: '15px',
-
-													backgroundColor: '#007782',
-													display: 'flex',
-													justifyContent: 'center',
-													alignItems: 'center',
-													boxShadow: '0px 2px 6px #AAA',
-													borderRadius: '50%',
-												}}
-											>
-												<div style={{ position: 'absolute', top: '-20px', backgroundColor: '#007782', padding: '5px', outline: 'none' }}>{values[index].toFixed(0)}</div>
-												<div
-													style={{
-														height: '15px',
-														width: '15px',
-														borderRadius: '50%',
-														backgroundColor: isDragged ? '#009782' : '#007782',
-													}}
-													tabIndex="1"
-													index={10}
-												></div>
-											</div>
-										)}
-									></Range>
+									<RangeSet values={range} setValues={setRange} handlePriceRange={handlePriceRange}></RangeSet>
 								</div>
 							</div>
 						</div>

@@ -4,7 +4,6 @@
 *{
     box-sizing: border-box;
     font-family: 'Font', sans-serif
-
 }
 
 @import url('./pages/OfferStyle.css');
@@ -18,11 +17,11 @@
 
 
 header{
-    height: 90px;
+    height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 20px;
+    padding: 10px 20px;
     /* padding: 20px; */
     
 }
@@ -42,7 +41,7 @@ header{
     align-items: center;
     width: 100%;
     height: 100%;
-    padding: 10px 0;
+    
     margin-right: 20px;
 }
 
@@ -56,6 +55,8 @@ header{
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100%;
+    justify-content: space-between;
 
 }
 
@@ -67,10 +68,10 @@ header{
     align-items: center;
     justify-content: flex-start;
     padding-left: 10px;
-    background-color: rgb(230, 230, 230);
+    background-color:#F5F6F7;
     border-radius: 5px;
-    height: 30px;
-    margin: 10px 0;
+    height: 40px;
+    
 }
 
 .nav-search-bar input{
@@ -107,18 +108,24 @@ header{
 .header-filters{
     display: flex;
     width: 100%;
+    font-size: 12px;
+    font-family: 'Font';
+}
+
+.header-filters h3{
+    min-width: 80px;
 }
 
 .price-sorting{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 15px;
+    
 }
 
 .filter-price{
     height: 20px;
-    width: 42px;
+    min-width: 42px;
     border-radius: 20px;
     background-color: var(--main-primary-color);
 }
@@ -152,5 +159,5 @@ header{
 }
 
 .slider-range{
-    width: 300px;
+    width: 100%;
 }
