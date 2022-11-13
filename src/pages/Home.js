@@ -15,10 +15,11 @@ const Hero = ({ setLoginVisible }) => {
 	return (
 		<>
 			<section className="hero">
-				<img src={heroImage} alt="hero" />
-				<div>
+				<div className="hero-image">
+					<img src={heroImage} alt="hero" />
 					<img className="hero-tear" src={tear} alt="" />
 				</div>
+
 				<div className="card-sell-now">
 					<h1>Prêts à faire du tri dans vos placards ?</h1>
 

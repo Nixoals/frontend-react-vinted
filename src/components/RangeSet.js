@@ -18,8 +18,8 @@ const RangeSet = ({ values, setValues, handlePriceRange }) => {
 				}}
 				renderTrack={({ props, children }) => (
 					<div
-						onMouseUp={props.onMouseUp}
-						// onTouchStart={props.onTouchStart}
+						onMouseDown={props.onMouseDown}
+						onTouchStart={props.onTouchStart}
 						style={{
 							...props.style,
 							height: '36px',

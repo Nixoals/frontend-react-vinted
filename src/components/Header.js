@@ -4,29 +4,32 @@ import logo from '../assets/images/logoVinted.svg';
 //methode
 import { useState } from 'react';
 import Cookies from 'js-cookie';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
+
+//Components
 import RangeSet from './RangeSet';
 
 const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, setFilterObj, setFilter }) => {
-	//body Modal
-
+	//check location for displaying filter pannel or not
+	const { pathname } = useLocation();
+	//Check Authentication
 	const token = Cookies.get('token');
 	const [orderPrice, setOrderPrice] = useState(true);
 	const [range, setRange] = useState([10, 100]);
 
 	const navigate = useNavigate();
 
+	//Change price range to display Offers
 	const handlePriceRange = (values) => {
 		setRange(values);
 		const newFilterObj = [...filterObj];
 		newFilterObj[0].priceMin = range[0];
 		newFilterObj[0].priceMax = range[1];
-
 		setFilterObj(newFilterObj);
 		setFilter(true);
 	};
 
+	//Change Offers order depending on price ascending or descending
 	const handleFilterPriceOrder = () => {
 		setOrderPrice(!orderPrice);
 		const order = orderPrice ? 'price-desc' : 'price-asc';
@@ -36,10 +39,10 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 		setFilter(true);
 	};
 
+	//Search items based on their title
 	const handleFilterTitle = async (title) => {
 		const newFilterObj = [...filterObj];
 		newFilterObj[0].title = title;
-
 		setFilterObj(newFilterObj);
 		setFilter(true);
 	};
@@ -66,7 +69,7 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 									value={filterObj.title}
 								/>
 							</div>
-							<div className="header-filters">
+							<div className={pathname === '/' ? 'header-filters' : 'header-filters-hidden'}>
 								<div className="price-sorting">
 									<h3>Trier par prix :</h3>
 									<div
@@ -86,51 +89,57 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 						</div>
 					</div>
 					<div className="primary-nav-right">
-						{token ? (
-							<>
-								<button
-									onClick={() => {
-										handleToken(null);
-										navigate('/');
-									}}
-								>
-									Deconnexion
-								</button>
-							</>
-						) : (
-							<>
-								<button
-									onClick={() => {
-										setSignupVisible(true);
-										document.body.className = 'body-modal';
-									}}
-								>
-									S'inscrire
-								</button>
+						<div className="burger-menu">
+							<div className="burger-icon">
+								<ion-icon name="menu-outline"></ion-icon>
+							</div>
+						</div>
+						<div className="nav-right-wrapper">
+							{token ? (
+								<>
+									<button
+										onClick={() => {
+											handleToken(null);
+											navigate('/');
+										}}
+									>
+										Deconnexion
+									</button>
+								</>
+							) : (
+								<>
+									<button
+										onClick={() => {
+											setSignupVisible(true);
+											document.body.className = 'body-modal';
+										}}
+									>
+										S'inscrire
+									</button>
 
-								<button
-									onClick={() => {
+									<button
+										onClick={() => {
+											setLoginVisible(true);
+											document.body.className = 'body-modal';
+										}}
+									>
+										Se connecter
+									</button>
+								</>
+							)}
+							<button
+								onClick={() => {
+									if (token) {
+										navigate('/sell-items');
+									} else {
 										setLoginVisible(true);
 										document.body.className = 'body-modal';
-									}}
-								>
-									Se connecter
-								</button>
-							</>
-						)}
-
-						<button
-							onClick={() => {
-								if (token) {
-									navigate('/sell-items');
-								} else {
-									setLoginVisible(true);
-									document.body.className = 'body-modal';
-								}
-							}}
-						>
-							Vends tes articles
-						</button>
+									}
+								}}
+							>
+								Vends tes articles
+							</button>
+						</div>
 					</div>
 				</nav>
 			</header>

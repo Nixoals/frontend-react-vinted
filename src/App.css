@@ -9,6 +9,7 @@
 @import url('./pages/OfferStyle.css');
 @import url('./pages/HomeStyle.css');
 @import url('./pages/UserFormStyle.css');
+@import url('./pages/PublishOfferStyle.css');
 
 :root{
     --main-primary-color:#007782; 
@@ -59,7 +60,7 @@ header{
     flex-direction: column;
     width: 100%;
     height: 100%;
-    justify-content: space-between;
+    justify-content: center;
 
 }
 
@@ -87,32 +88,25 @@ header{
 
 .primary-nav-right{
     display: flex;
-    width: 430px;
+    justify-content: center;
+    align-items: center;
     height: 60px;
     padding: 15px 0;
     gap: 10px;  
 }
 
-.primary-nav-right button{
-    cursor: pointer;
-    font-size: 12px;
-    color: var(--main-primary-color);
-    border: solid 1px var(--main-primary-color);
-    background-color: white;
-    border-radius: 5px;
-    width: 133px;
-}
 
-.primary-nav-right button:last-child{
-    color: white;
-    background-color: var(--main-primary-color);
-}
 
 .header-filters{
     display: flex;
     width: 100%;
     font-size: 12px;
     font-family: 'Font';
+    margin-top: 25px;
+}
+
+.header-filters-hidden{
+    display: none;
 }
 
 .header-filters h3{
@@ -162,5 +156,55 @@ header{
 }
 
 .slider-range{
-    width: 100%;
+    width: 100%
+}
+
+
+.burger-menu{
+    display: none;
+}
+
+.burger-menu .burger-icon{
+    height: 34px;
+    width: 34px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.nav-right-wrapper{
+    display: flex;
+    width: 430px;
+    height: 60px;
+    padding: 15px 0;
+    gap: 10px; 
+}
+
+.nav-right-wrapper button{
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--main-primary-color);
+    border: solid 1px var(--main-primary-color);
+    background-color: white;
+    border-radius: 5px;
+    width: 133px;
+}
+
+.nav-right-wrapper button:last-child{
+    color: white;
+    background-color: var(--main-primary-color);
+}
+
+@media (max-width:960px){
+    .primary-nav-right{
+        width: 80px;
+    }
+    .burger-menu{
+        display: flex;
+    }
+    .nav-right-wrapper{
+        display: none;
+    }
 }

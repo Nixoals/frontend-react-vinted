@@ -1,0 +1,215 @@
+
+@import url('../assets/fonts/stylesheet.css');
+
+
+*{
+    box-sizing: border-box;
+    font-family: 'Font', sans-serif
+}
+
+:root{
+    --main-primary-color:#007782; 
+    --main-gray: #757575;
+}
+
+
+input[type="file"] {
+    display: none;
+}
+
+.upload-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 48px;
+    width: 180px;
+    color: var(--main-primary-color);
+    border: solid 1px var(--main-primary-color);
+    border-radius: 4px;
+}
+
+.upload-button-hidden{
+    display: none;
+}
+
+.upload-button span{
+    font-size: 16px;
+    margin: 0 auto;
+}
+.upload-button span:first-of-type{
+    font-size: 40px;
+}
+
+.background-publish-wrapper{
+    height: 100%;
+    width: 100%;
+    background-color: #EBEDEE;
+    /* padding: 0 24px; */
+
+}
+.publish-wrapper{
+    max-width: 900px;
+    margin: auto;
+    padding: 0 24px;
+}
+
+.publish-wrapper >input{
+    right: auto;
+}
+.publish-wrapper h1{
+font-size: 24px;
+padding-top: 40px;
+margin: 20px 0;
+}
+
+.upload-picture-container{
+    background-color: white;
+    height: 250px;
+    padding: 24px;
+    margin: 20px 0;
+    width: 100%;
+    box-shadow: 0 0 2px grey;
+}
+
+
+.upload-picture-dashed,
+.upload-picture-dashed-flex-start{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 10px 0;
+    border: dashed 1px rgba(200, 200, 200, 0.37);
+}
+
+.upload-picture-dashed-flex-start{
+    justify-content: flex-start;
+}
+
+.uploaded-picture-wrapper{
+    height: 100%;
+    margin: 0 10px;
+    position: relative;
+}
+
+.uploaded-picture-wrapper img{
+    height: 100%;
+}
+
+
+.suppress-button-image{
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: rgb(248, 248, 248);
+    border: none;
+    border-radius: 4px;
+    height: 30px;
+    width: 25px;
+    font-weight: 700;
+    font-size: 22px;
+    box-shadow: 2px 2px 5px gray;
+}
+
+.offer-container, .price-offer-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 10px 0;
+    box-shadow: 2px 2px 5px gray;
+    background-color: white;
+    margin-bottom: 20px; 
+}
+.price-offer-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 10px 0;
+    box-shadow: 2px 2px 5px gray;
+    background-color: white;
+
+}
+
+.price-offer-container div{
+    display: flex;
+    flex-direction: row;
+    padding: 24px;
+    width: 100%;
+}
+
+.offer-container div{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #ebedee;
+    padding: 24px;
+    width: 100%;
+    
+}
+
+.offer-container div h2, .price-offer-container div h2{
+    font-size: 16px;
+    width: 50%;
+}
+
+.offer-container div input, .price-offer-container div input{
+    border: none;
+    border-bottom: 1px solid #ebedee;
+    outline: none;
+    width: 50%;
+}
+
+.offer-container textarea{
+    border: none;
+    outline: none;
+    /* padding: 0; */
+}
+
+.offer-container .exchange-checkbox{
+    padding: 0px;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+.price-offer-container .exchange-checkbox div{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: auto;
+    max-width: 450px;
+    height: 30px;
+    padding: 0;
+    border: none;
+}
+
+.price-offer-container .exchange-checkbox div input{
+    max-width: 30px;
+    height: 24px;
+}
+.price-offer-container .exchange-checkbox div h2{
+    width: auto;
+}
+
+.submit-offer{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.submit-offer input{
+    background-color: var(--main-primary-color);
+    padding: 12px;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    margin: 35px 0;
+    font-size: 16px;
+}

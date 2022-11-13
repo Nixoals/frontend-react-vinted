@@ -1,14 +1,16 @@
 //mainStyle
 import './App.css';
+
 //functions
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 
-//Pages routes
+//Pages
 import Offer from './pages/Offer';
 import Home from './pages/Home';
-import Sell from './pages/Sell';
+import Publish from './pages/Publish';
+
 //components && modals
 import Header from './components/Header';
 import Login from './components/Login';
@@ -38,7 +40,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home setLoginVisible={setLoginVisible} filterObj={filterObj} filter={filter} setFilter={setFilter}></Home>}></Route>
 					<Route path="/offer/:id" element={<Offer></Offer>}></Route>
-					<Route path="/sell-items" element={<Sell token={token}></Sell>}></Route>
+					<Route path="/sell-items" element={<Publish token={token}></Publish>}></Route>
 				</Routes>
 				{/* Modals */}
 				{loginVisible && <Login handleToken={handleToken} setLoginVisible={setLoginVisible} setSignupVisible={setSignupVisible}></Login>}

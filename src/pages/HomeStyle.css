@@ -12,22 +12,30 @@
     margin-bottom: 30px;
 }
 
-.hero > img{
+.hero-image{
+    height: 100%;
+    width: 100%;
+    position:relative
+}
+
+.hero-image > img{
     height: 100%;
     width: 100%;
     object-fit: cover;
-    position: relative;
+    
 }
 
 .hero .hero-tear{
     bottom: 0;
     position: absolute;
     z-index: 10;
-    
+    right: 0;
+    width: 50%;
+    height: auto;
 }
 
 .card-sell-now{
-    height: 297px;
+    min-height: 297px;
     width: 382px;
     top: 100px;
     position: absolute;
@@ -68,15 +76,7 @@
     margin: 25px 0;
 }
 
-.home-item-wrapper{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    max-width: 1224px;
-    margin: auto;
-    padding: 0 20px;
-    
-}
+
 .price-info{
     display: flex;
     justify-content: flex-start;
@@ -88,15 +88,7 @@
     height: 20px;
 }
 
-.home-items{
-    display: flex;
-    flex-direction: column;
-    padding: 0 8px 16px 8px;
-    /* max-height: 576px; */
-    max-width: 300px;
-    max-height: 600px;
-    flex: 1 1 200px;
-}
+
 
 .item-image-product{
     height: 100%;
@@ -150,4 +142,85 @@
 
  .heart-icon{
     font-size: 12px;
+}
+
+.home-item-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1280px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.home-items{
+    display: flex;
+    flex-direction: column;
+    width: calc(100% / 5 - 80px/5);
+    margin-bottom: 30px;
+    box-sizing: border-box;
+}
+
+.home-items:not(:nth-child(5n)){
+    margin-right: 20px;   
+}
+
+
+@media (max-width:1280px) {
+  
+}
+
+@media (max-width:1200px){
+    .home-items{
+        width: calc(100% / 4 - 60px/3);
+    }
+    .home-items:not(:nth-child(4n)){
+        margin-right: 20px;
+    }
+}
+@media (max-width:960px){
+    .home-items{
+        width: calc(100% / 3 - 40px/2);
+    }
+    .home-items:not(:nth-child(3n)){
+        margin-right: 20px;
+    }
+
+}
+
+@media (max-width:720px){
+    .home-items{
+        width: calc(100% / 2 - 20px);
+       
+    }
+    .home-items:not(:nth-child(2n)){
+        margin-right: 20px;
+    }
+   
+    .hero{
+        width: 100%;
+        height: auto;
+    }
+    .hero-image{
+        height: auto;
+    }
+    .hero .hero-tear{
+        width: 100%;
+    }
+
+    .card-sell-now{
+        display: flex;
+        flex-direction: column;
+        position: unset;
+        margin: auto;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        min-height: 176px;
+    }
+    .card-sell-now h1{
+        font-size: 24px;
+        width: auto;
+    }
+
 }
