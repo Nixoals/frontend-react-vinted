@@ -41,7 +41,7 @@ const Offer = () => {
 						</div>
 						<div className="single-offer-user-wrapper">
 							<h1>{data.product_name}</h1>
-							<p>{data.product_details[2].État}</p>
+							<p>{data.product_description}</p>
 							<div>
 								<div className="single-offer-user">
 									<img src={data.owner.account.avatar} alt="user avatar"></img>

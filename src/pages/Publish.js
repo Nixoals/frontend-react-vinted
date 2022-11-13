@@ -2,8 +2,10 @@ import { useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 const Publish = () => {
+	const navigate = useNavigate();
 	const {
 		register,
 		handleSubmit,
@@ -42,8 +44,8 @@ const Publish = () => {
 		const url = 'https://site--vinted-backend--gsmxcbzt8tzm.code.run/offer/publish';
 		// const url = 'http://localhost:8080/offer/publish';
 
-		const response = await axios.post(url, formData, config);
-		console.log(response);
+		await axios.post(url, formData, config);
+		navigate('/');
 	};
 
 	return (

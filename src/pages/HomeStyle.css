@@ -159,6 +159,7 @@
     width: calc(100% / 5 - 80px/5);
     margin-bottom: 30px;
     box-sizing: border-box;
+    gap: 6px;
 }
 
 .home-items:not(:nth-child(5n)){
