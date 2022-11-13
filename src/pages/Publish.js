@@ -33,7 +33,7 @@ const Publish = () => {
 		formData.append('city', data.city);
 		formData.append('price', data.price);
 		formData.append('condition', data.condition);
-		console.log(data.file[0]);
+		// console.log(data.file[0]);
 		const token = Cookies.get('token');
 		const config = {
 			headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' },

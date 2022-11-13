@@ -57,7 +57,6 @@ const Home = ({ setLoginVisible, filterObj, filter, setFilter }) => {
 
 			const response = await axios.get(url, { params: newFilterObj[0] });
 			const data = response.data;
-			console.log('dataFetched');
 
 			setData(data);
 			setIsLoading(false);
