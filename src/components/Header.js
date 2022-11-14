@@ -90,7 +90,13 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 					</div>
 					<div className="primary-nav-right">
 						<div className="burger-menu">
-							<div className="burger-icon">
+							<div
+								on
+								onClick={() => {
+									console.log('coucou');
+								}}
+								className="burger-icon"
+							>
 								<ion-icon name="menu-outline"></ion-icon>
 							</div>
 						</div>
