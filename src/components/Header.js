@@ -91,7 +91,6 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 					<div className="primary-nav-right">
 						<div className="burger-menu">
 							<div
-								on
 								onClick={() => {
 									console.log('coucou');
 								}}
