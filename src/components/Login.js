@@ -19,7 +19,7 @@ const Login = ({ handleToken, setLoginVisible, setSignupVisible }) => {
 			document.body.classList.toggle('body-modal');
 			handleToken(token);
 			setLoginVisible(false);
-			navigate('/');
+			navigate('/publish');
 		} catch (error) {
 			setAlerte(true);
 			console.log(error.message);

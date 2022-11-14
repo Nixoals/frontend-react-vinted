@@ -52,13 +52,7 @@ const Publish = () => {
 			return null;
 		}
 	});
-	const {
-		register,
-		handleSubmit,
-		// reset,
-		// formState,
-		// formState: { errors },
-	} = useForm();
+	const { register, handleSubmit } = useForm();
 
 	const handleSubmitOffer = async (data) => {
 		try {
@@ -79,8 +73,8 @@ const Publish = () => {
 				headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' },
 			};
 
-			// const url = 'https://site--vinted-backend--gsmxcbzt8tzm.code.run/offer/publish';
-			const url = 'http://localhost:8080/offer/publish';
+			const url = 'https://site--vinted-backend--gsmxcbzt8tzm.code.run/offer/publish';
+			// const url = 'http://localhost:8080/offer/publish';
 
 			const response = await axios.post(url, formData, config);
 			console.log(response.data);

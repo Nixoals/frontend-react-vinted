@@ -6,7 +6,7 @@
     --main-primary-color:#007782; 
 }
 .single-offer-background{
-    height: 100vh;
+    height: calc(100vh - 120px);
     background-color: #F2F2F2;
 }
 

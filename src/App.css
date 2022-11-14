@@ -200,6 +200,36 @@ header{
     background-color: var(--main-primary-color);
 }
 
+footer{
+    
+    width: 100%;
+    background-color: #F2F2F2;
+    padding: 0 20px;
+    
+}
+
+footer div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 1240px;
+    padding: 12px 0;
+    font-size: 13px;
+    color: #757575;
+    margin: auto;
+    flex-wrap: wrap;
+    border-top: solid 1px rgba(217, 217, 217, 0.532);
+}
+footer span{
+    display: flex;
+    justify-content: center;
+    height: 24px;
+    align-items: center;
+    margin-right: 16px;
+    font-family: "Font";
+    
+}
+
 @media (max-width:960px){
     .primary-nav-right{
         width: 80px;
@@ -211,3 +241,4 @@ header{
         display: none;
     }
 }
+

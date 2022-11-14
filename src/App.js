@@ -15,6 +15,7 @@ import Publish from './pages/Publish';
 import Header from './components/Header';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Footer from './components/Footer';
 
 //Main App
 function App() {
@@ -40,8 +41,9 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home setLoginVisible={setLoginVisible} filterObj={filterObj} filter={filter} setFilter={setFilter}></Home>}></Route>
 					<Route path="/offer/:id" element={<Offer></Offer>}></Route>
-					<Route path="/sell-items" element={<Publish token={token}></Publish>}></Route>
+					<Route path="/publish" element={<Publish token={token}></Publish>}></Route>
 				</Routes>
+				<Footer></Footer>
 				{/* Modals */}
 				{loginVisible && <Login handleToken={handleToken} setLoginVisible={setLoginVisible} setSignupVisible={setSignupVisible}></Login>}
 				{signupVisible && <Signup handleToken={handleToken} setSignupVisible={setSignupVisible} setLoginVisible={setLoginVisible}></Signup>}

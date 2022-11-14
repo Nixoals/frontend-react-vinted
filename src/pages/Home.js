@@ -26,7 +26,7 @@ const Hero = ({ setLoginVisible }) => {
 					<button
 						onClick={() => {
 							if (token) {
-								navigate('/sell-items');
+								navigate('/publish');
 							} else {
 								setLoginVisible(true);
 								document.body.className = 'body-modal';
