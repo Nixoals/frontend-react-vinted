@@ -1,11 +1,57 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
+import { useDropzone } from 'react-dropzone';
+
 const Publish = () => {
 	const navigate = useNavigate();
+
+	const [loadedImage, setLoadedImage] = useState([]);
+	const [pictures, setPictures] = useState([]);
+
+	const onDrop = useCallback(
+		(acceptedFiles) => {
+			const newLoadedImgae = [...loadedImage];
+			newLoadedImgae.push(URL.createObjectURL(acceptedFiles[0]));
+			setLoadedImage(newLoadedImgae);
+
+			const newPicture = [...pictures];
+			newPicture.push(acceptedFiles);
+			setPictures(newPicture);
+		},
+		[loadedImage, pictures]
+	);
+
+	const { getRootProps, getInputProps } = useDropzone({ onDrop });
+	const files = loadedImage.map((file, index) => {
+		if (index < 3) {
+			return (
+				<div className="file-names-upload-li" key={index}>
+					<li>{`image ${index + 1}`}</li>
+					<button
+						onClick={() => {
+							const removeLoadedImage = [...loadedImage];
+							removeLoadedImage.splice(index, 1);
+
+							const removePicture = [...pictures];
+							removePicture.splice(index, 1);
+
+							setLoadedImage(removeLoadedImage);
+							setPictures(removePicture);
+						}}
+						className="suppress-button-image"
+					>
+						X
+					</button>
+				</div>
+			);
+		} else {
+			return null;
+		}
+	});
 	const {
 		register,
 		handleSubmit,
@@ -14,38 +60,34 @@ const Publish = () => {
 		// formState: { errors },
 	} = useForm();
 
-	const [loadedImage, setLoadedImage] = useState([]);
-
-	//Load Image
-	const handleImage = (file) => {
-		const newLoadedImgae = [...loadedImage];
-		newLoadedImgae.push(URL.createObjectURL(file));
-		setLoadedImage(newLoadedImgae);
-	};
-	//Publish Offer
 	const handleSubmitOffer = async (data) => {
-		let formData = new FormData();
-		console.log(data.file);
-		formData.append('picture', data.file[0]);
-		formData.append('title', data.title);
-		formData.append('description', data.description);
-		formData.append('brand', data.brand);
-		formData.append('size', data.size);
-		formData.append('color', data.color);
-		formData.append('city', data.city);
-		formData.append('price', data.price);
-		formData.append('condition', data.condition);
-		// console.log(data.file[0]);
-		const token = Cookies.get('token');
-		const config = {
-			headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' },
-		};
+		try {
+			let formData = new FormData();
+			console.log(pictures[0][0]);
+			formData.append('picture', pictures[0][0]);
+			formData.append('title', data.title);
+			formData.append('description', data.description);
+			formData.append('brand', data.brand);
+			formData.append('size', data.size);
+			formData.append('color', data.color);
+			formData.append('city', data.city);
+			formData.append('price', data.price);
+			formData.append('condition', data.condition);
 
-		const url = 'https://site--vinted-backend--gsmxcbzt8tzm.code.run/offer/publish';
-		// const url = 'http://localhost:8080/offer/publish';
+			const token = Cookies.get('token');
+			const config = {
+				headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' },
+			};
 
-		await axios.post(url, formData, config);
-		navigate('/');
+			// const url = 'https://site--vinted-backend--gsmxcbzt8tzm.code.run/offer/publish';
+			const url = 'http://localhost:8080/offer/publish';
+
+			const response = await axios.post(url, formData, config);
+			console.log(response.data);
+			navigate('/');
+		} catch (error) {
+			console.log(error.message);
+		}
 	};
 
 	return (
@@ -54,36 +96,20 @@ const Publish = () => {
 				<section className="publish-wrapper">
 					<h1>Vends ton article</h1>
 					<div className="upload-picture-container">
-						<div className={loadedImage.length === 0 ? 'upload-picture-dashed' : 'upload-picture-dashed-flex-start'}>
+						<div {...getRootProps({ className: 'dropzone upload-picture-dashed' })}>
 							<label className={loadedImage.length === 0 ? 'upload-button' : 'upload-button-hidden'}>
-								<input
-									type="file"
-									{...register('file', {
-										onChange: (event) => {
-											handleImage(event.target.files[0]);
-										},
-									})}
-									placeholder="Ajouter une photo"
-								/>
+								<input {...getInputProps()} />
 								<span>+</span>
-								<span>Ajouter une photo</span>
+								<span>Glissez/déposer une image</span>
 							</label>
 
 							{loadedImage ? (
 								<>
 									{loadedImage.map((picture, index) => {
-										if (index < 1) {
+										if (index < 3) {
 											return (
 												<div key={index} className="uploaded-picture-wrapper">
 													<img src={picture} alt={picture}></img>
-													<button
-														onClick={() => {
-															setLoadedImage([]);
-														}}
-														className="suppress-button-image"
-													>
-														X
-													</button>
 												</div>
 											);
 										} else {
@@ -95,6 +121,11 @@ const Publish = () => {
 								<></>
 							)}
 						</div>
+						{loadedImage ? (
+							<div>
+								<ul className="file-names-upload">{files}</ul>
+							</div>
+						) : null}
 					</div>
 					<form onSubmit={handleSubmit(handleSubmitOffer)}>
 						<div className="offer-container">
@@ -132,7 +163,7 @@ const Publish = () => {
 						<div className="price-offer-container">
 							<div>
 								<h2>Prix</h2>
-								<input {...register('price')} type="number" placeholder="0,00 €" />
+								<input {...register('price')} type="number" min="1" placeholder="0,00 €" />
 							</div>
 							<div className="exchange-checkbox">
 								<div>
