@@ -51,7 +51,6 @@ const Home = ({ setLoginVisible, filterObj, filter, setFilter }) => {
 	useEffect(() => {
 		const fetchData = async () => {
 			const newFilterObj = [...filterObj];
-			// const response = await axios.get('https://site--vinted-backend--gsmxcbzt8tzm.code.run/offer', filterObj);
 			const url = `https://site--vinted-backend--gsmxcbzt8tzm.code.run/offer`;
 			// const url = `http://localhost:8080/offer`;
 
