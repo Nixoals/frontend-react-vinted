@@ -117,6 +117,7 @@ header{
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    gap: 10px;
     
 }
 
@@ -227,7 +228,100 @@ footer span{
     align-items: center;
     margin-right: 16px;
     font-family: "Font";
+    cursor: pointer;
     
+}
+
+
+
+.bm-burger-button {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 40px;
+    top: 44px;
+    background-color: rgb(231, 231, 231);
+    border-radius: 5px;
+    z-index: 0;
+}
+
+.body-modal .bm-burger-button{
+    display: none;
+}
+
+.bm-item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: absolute;
+    padding: 0.8em;
+    width: 100%;
+
+}
+
+/* .menu-item{
+    
+    border: #007782 solid 1px;
+    width: 133px;
+    height: 30px;
+    font-size: 12px;
+    font-family: 'Font';
+    color: var(--main-primary-color);
+
+} */
+
+
+.menu-item{
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   margin-top: 50px;
+}
+
+.menu-item button{
+    color: var(--main-primary-color);
+    background-color: white;
+    border: solid 1px var(--main-primary-color);
+    border-radius: 5px;
+    height: 30px;
+    font-family: 'Font';
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.menu-item button:last-of-type{
+    background-color: var(--main-primary-color);
+    color: white;
+}
+
+.bm-menu{
+    background-color: rgba(255, 255, 255, 0.952);
+}
+.bm-menu-wrap{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100%;
+    border-left: rgb(134, 134, 134) 1px solid;
+    box-shadow: -2px -2px 8px var(--main-primary-color);
+}
+
+.bm-cross-button {
+    
+    border: solid 1px var(--main-primary-color);
+    box-shadow: -1px 1px 5px var(--main-primary-color);
+    border-radius: 3px;
+    height: 24px;
+    width: 24px;
+    
+
+}
+
+
+
+.bm-cross {
+    background: var(--main-primary-color);
 }
 
 @media (max-width:960px){
@@ -238,6 +332,12 @@ footer span{
         display: flex;
     }
     .nav-right-wrapper{
+        display: none;
+    }
+}
+
+@media (max-width:550px){
+    .header-filters{
         display: none;
     }
 }

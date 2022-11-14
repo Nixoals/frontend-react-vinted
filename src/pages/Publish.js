@@ -11,21 +11,24 @@ const Publish = () => {
 
 	const [loadedImage, setLoadedImage] = useState([]);
 	const [pictures, setPictures] = useState([]);
+	const { register, handleSubmit } = useForm();
 
 	const onDrop = useCallback(
 		(acceptedFiles) => {
-			const newLoadedImgae = [...loadedImage];
-			newLoadedImgae.push(URL.createObjectURL(acceptedFiles[0]));
-			setLoadedImage(newLoadedImgae);
-
-			const newPicture = [...pictures];
-			newPicture.push(acceptedFiles);
-			setPictures(newPicture);
+			if (pictures.length < 3) {
+				const newLoadedImgae = [...loadedImage];
+				newLoadedImgae.push(URL.createObjectURL(acceptedFiles[0]));
+				setLoadedImage(newLoadedImgae);
+				const newPicture = [...pictures];
+				newPicture.push(acceptedFiles);
+				setPictures(newPicture);
+			}
 		},
 		[loadedImage, pictures]
 	);
 
 	const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
 	const files = loadedImage.map((file, index) => {
 		if (index < 3) {
 			return (
@@ -52,7 +55,6 @@ const Publish = () => {
 			return null;
 		}
 	});
-	const { register, handleSubmit } = useForm();
 
 	const handleSubmitOffer = async (data) => {
 		try {

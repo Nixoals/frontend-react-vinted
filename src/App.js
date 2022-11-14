@@ -34,6 +34,7 @@ function App() {
 			Cookies.remove('token');
 		}
 	};
+
 	return (
 		<>
 			<Router>

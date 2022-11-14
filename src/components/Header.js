@@ -5,6 +5,7 @@ import logo from '../assets/images/logoVinted.svg';
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { slide as Menu } from 'react-burger-menu';
 
 //Components
 import RangeSet from './RangeSet';
@@ -16,6 +17,7 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 	const token = Cookies.get('token');
 	const [orderPrice, setOrderPrice] = useState(true);
 	const [range, setRange] = useState([10, 100]);
+	const [menuOpen, setMenuOpen] = useState(false);
 
 	const navigate = useNavigate();
 
@@ -45,6 +47,14 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 		newFilterObj[0].title = title;
 		setFilterObj(newFilterObj);
 		setFilter(true);
+	};
+
+	const handleCloseMenu = () => {
+		setMenuOpen(false);
+	};
+
+	const handleStateMenu = (state) => {
+		setMenuOpen(state.isOpen);
 	};
 
 	return (
@@ -90,15 +100,63 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 					</div>
 					<div className="primary-nav-right">
 						<div className="burger-menu">
-							<div
-								onClick={() => {
-									console.log('coucou');
-								}}
-								className="burger-icon"
-							>
-								<ion-icon name="menu-outline"></ion-icon>
+							<div>
+								<Menu width={200} isOpen={menuOpen} onStateChange={handleStateMenu} right customBurgerIcon={<ion-icon name="menu-outline"></ion-icon>}>
+									<div>
+										<div className="menu-item">
+											{token ? (
+												<>
+													<button
+														onClick={() => {
+															handleCloseMenu();
+															handleToken(null);
+															navigate('/');
+														}}
+													>
+														Deconnexion
+													</button>
+												</>
+											) : (
+												<>
+													<button
+														onClick={() => {
+															handleCloseMenu();
+															setSignupVisible(true);
+															document.body.className = 'body-modal';
+														}}
+													>
+														S'inscrire
+													</button>
+
+													<button
+														onClick={() => {
+															handleCloseMenu();
+															setLoginVisible(true);
+															document.body.className = 'body-modal';
+														}}
+													>
+														Se connecter
+													</button>
+												</>
+											)}
+											<button
+												onClick={() => {
+													if (token) {
+														navigate('/publish');
+													} else {
+														setLoginVisible(true);
+														document.body.className = 'body-modal';
+													}
+												}}
+											>
+												Vends tes articles
+											</button>
+										</div>
+									</div>
+								</Menu>
 							</div>
 						</div>
+
 						<div className="nav-right-wrapper">
 							{token ? (
 								<>
