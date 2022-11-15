@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 import axios from 'axios';
+import Loader from '../components/Loader';
+
 const Offer = ({ setLoginVisible }) => {
 	const { id } = useParams();
 
@@ -27,9 +29,7 @@ const Offer = ({ setLoginVisible }) => {
 			<div className="single-offer-background">
 				<section className="single-offer-wrapper">
 					<div className="single-offer-image">
-						<div>
-							<img src={data.product_image.secure_url} alt="product"></img>
-						</div>
+						<img src={data.product_image.secure_url} alt="product"></img>
 					</div>
 
 					<div className="single-offer-description">
@@ -85,7 +85,7 @@ const Offer = ({ setLoginVisible }) => {
 			</div>
 		</>
 	) : (
-		<div>...downloading Data</div>
+		<Loader></Loader>
 	);
 };
 

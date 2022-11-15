@@ -22,7 +22,7 @@ const HandleToken = ({ setLoginVisible }) => {
 	);
 };
 
-const Publish = ({ setLoginVisible, setPublishedOffer }) => {
+const Publish = ({ setLoginVisible, setPublishedOffer, setLoader }) => {
 	const [loadedImage, setLoadedImage] = useState([]);
 	const [pictures, setPictures] = useState([]);
 	const { register, handleSubmit } = useForm();
@@ -73,6 +73,8 @@ const Publish = ({ setLoginVisible, setPublishedOffer }) => {
 
 	const handleSubmitOffer = async (data) => {
 		try {
+			setLoader(true);
+			document.body.classList.toggle('body-modal');
 			let formData = new FormData();
 			console.log(pictures[0][0]);
 			formData.append('picture', pictures[0][0]);
@@ -97,7 +99,8 @@ const Publish = ({ setLoginVisible, setPublishedOffer }) => {
 			console.log(response.data);
 			document.body.classList.toggle('body-modal');
 			setPublishedOffer(true);
-			// navigate('/');
+			setLoader(false);
+			document.body.classList.toggle('body-modal');
 		} catch (error) {
 			console.log(error.message);
 		}

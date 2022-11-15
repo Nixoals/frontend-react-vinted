@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 
 import axios from 'axios';
 
-const CheckoutForm = ({ id }) => {
+const CheckoutForm = ({ id, userId, setLoader }) => {
 	const stripe = useStripe();
 	const elements = useElements();
 	const token = Cookies.get('token');
@@ -17,11 +17,13 @@ const CheckoutForm = ({ id }) => {
 
 	const handleSubmitForm = async (event) => {
 		event.preventDefault();
+		setLoader(true);
+		document.body.classList.toggle('body-modal');
 
 		const cardElement = elements.getElement(CardElement);
 
 		const stripeResponse = await stripe.createToken(cardElement, {
-			name: "person's name",
+			name: `${userId}`,
 		});
 		console.log(stripeResponse);
 		const stripeToken = stripeResponse.token.id;
@@ -36,6 +38,8 @@ const CheckoutForm = ({ id }) => {
 		if (response.data.status === 'succeeded') {
 			setCompleted(true);
 		}
+		setLoader(false);
+		document.body.classList.toggle('body-modal');
 	};
 	return (
 		<>
@@ -47,7 +51,11 @@ const CheckoutForm = ({ id }) => {
 					</button>
 				</form>
 			) : (
-				<span>payment effectué</span>
+				<div className="succesfull-payment">
+					<div>
+						<div>Le paiement à été éffecté avec succès</div>
+					</div>
+				</div>
 			)}
 		</>
 	);

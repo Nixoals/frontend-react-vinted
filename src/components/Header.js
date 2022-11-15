@@ -144,6 +144,7 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 													if (token) {
 														navigate('/publish');
 													} else {
+														handleCloseMenu();
 														setLoginVisible(true);
 														document.body.className = 'body-modal';
 													}

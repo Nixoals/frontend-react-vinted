@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import heroImage from '../assets/images/hero.jpg';
 import tear from '../assets/images/tear.svg';
 import Offers from '../components/Offers';
+import Loader from '../components/Loader';
 
 //Hero Component
 const Hero = ({ setLoginVisible }) => {
@@ -67,10 +68,10 @@ const Home = ({ setLoginVisible, filterObj, filter, setFilter }) => {
 	return (
 		<>
 			<main>
-				<Hero setLoginVisible={setLoginVisible}></Hero>
-				<h1 className="title-home-offers">Articles populaires</h1>
 				{!isLoading ? (
 					<div>
+						<Hero setLoginVisible={setLoginVisible}></Hero>
+						<h1 className="title-home-offers">Articles populaires</h1>
 						<section className="home-item-wrapper">
 							{data.offers.map((item) => {
 								return <Offers key={item._id} item={item}></Offers>;
@@ -78,7 +79,7 @@ const Home = ({ setLoginVisible, filterObj, filter, setFilter }) => {
 						</section>
 					</div>
 				) : (
-					<div></div>
+					<Loader></Loader>
 				)}
 			</main>
 		</>

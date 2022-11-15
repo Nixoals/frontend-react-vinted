@@ -29,9 +29,10 @@ const Signup = ({ handleToken, setSignupVisible, setLoginVisible }) => {
 
 				const response = await axios.post(url, data);
 				const token = response.data.token;
+				const id = response.data._id;
 				document.body.classList.toggle('body-modal');
 				setSignupVisible(false);
-				handleToken(token);
+				handleToken(token, id);
 
 				return navigate('/');
 			}

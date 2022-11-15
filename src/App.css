@@ -316,15 +316,46 @@ footer span{
     border-radius: 3px;
     height: 24px;
     width: 24px;
-    
-
 }
-
-
 
 .bm-cross {
     background: var(--main-primary-color);
 }
+
+/* loader */
+
+.loader-wrapper{
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.714);
+    z-index: 10;
+    
+}
+
+.loader-container{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.loading-title{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size: 24px;
+    /* translate: 25px; */
+    margin-bottom: 30px;
+}
+
+
+/* loader */
+
 
 @media (max-width:960px){
     .primary-nav-right{

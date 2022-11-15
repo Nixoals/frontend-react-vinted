@@ -6,9 +6,10 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 
 import CheckoutForm from '../components/CheckoutForm';
+
 const stripePromise = loadStripe('pk_test_51M4MCzHTRmDc4m32Tx72yLK6JZzwzCB7neMvSMszsXqKDzjWqgL5nqmkqlFpeSkwVDTSlyjTsdisqMwqLHGs65zZ00hFHW31ME');
 
-const Payment = () => {
+const Payment = ({ userId, setLoader }) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [data, setData] = useState();
 	const location = useLocation();
@@ -23,12 +24,16 @@ const Payment = () => {
 			const url = `https://site--vinted-backend--gsmxcbzt8tzm.code.run/offer/${id}`;
 			const response = await axios.get(url);
 			const data = response.data;
-			setData(data);
 
+			setData(data);
 			setIsLoading(false);
+
+			if (data.sold) {
+				navigate('/');
+			}
 		};
 		fetchData();
-	}, [id]);
+	}, [id, navigate]);
 	return !isLoading ? (
 		<>
 			<section className="payment-background">
@@ -62,7 +67,7 @@ const Payment = () => {
 						<div className="divider"> </div>
 						<div className="strip-element">
 							<Elements stripe={stripePromise}>
-								<CheckoutForm id={id} />
+								<CheckoutForm id={id} userId={userId} setLoader={setLoader} />
 							</Elements>
 						</div>
 					</div>

@@ -12,10 +12,10 @@
 
 .single-offer-wrapper{
     display: flex;
-    justify-content: space-evenly;
+    height: 100%;
     gap: 30px;
     padding: 25px;
-    max-width: 1024px;
+    max-width: 900px;
     margin: auto;
 }
 
@@ -37,22 +37,19 @@
 
 
 
-.single-offer-image div{
+.single-offer-image {
     max-width: 400px;
     width: 100%;
     height: 100%;
     background-color: white;
-    border-radius: 7px;
-   
-    
+    border-radius: 7px;    
 }
 
-
-.single-offer-image div img{
+.single-offer-image img{
     width: 100%;
+    aspect-ratio: 0.6;
     height: 100%;
     object-fit: cover;
-    aspect-ratio: 0.7;
 }
 
 .single-offer-description{
