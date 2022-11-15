@@ -12,8 +12,8 @@ const Login = ({ handleToken, setLoginVisible, setSignupVisible }) => {
 
 	const handleSubmit = async () => {
 		try {
-			// const url = 'https://site--vinted-backend--gsmxcbzt8tzm.code.run/user/login';
-			const url = 'http://localhost:8080/user/login';
+			const url = 'https://site--vinted-backend--gsmxcbzt8tzm.code.run/user/login';
+			// const url = 'http://localhost:8080/user/login';
 			const data = { email, password };
 			const response = await axios.post(url, data);
 
