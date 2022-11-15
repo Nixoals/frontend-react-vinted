@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 const Login = ({ handleToken, setLoginVisible, setSignupVisible }) => {
@@ -8,6 +8,7 @@ const Login = ({ handleToken, setLoginVisible, setSignupVisible }) => {
 	const [password, setPassword] = useState('');
 	const [alerte, setAlerte] = useState(false);
 	const navigate = useNavigate();
+	const { pathname } = useLocation();
 
 	const handleSubmit = async () => {
 		try {
@@ -19,7 +20,11 @@ const Login = ({ handleToken, setLoginVisible, setSignupVisible }) => {
 			document.body.classList.toggle('body-modal');
 			handleToken(token);
 			setLoginVisible(false);
-			navigate('/publish');
+			const getPath = pathname.split('/');
+			console.log(getPath);
+			if (!getPath.includes('offer')) {
+				navigate('/publish');
+			}
 		} catch (error) {
 			setAlerte(true);
 			console.log(error.message);

@@ -16,6 +16,7 @@ import Header from './components/Header';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Footer from './components/Footer';
+import Payment from './pages/Payment';
 
 //Main App
 function App() {
@@ -41,8 +42,9 @@ function App() {
 				<Header handleToken={handleToken} setLoginVisible={setLoginVisible} setSignupVisible={setSignupVisible} filterObj={filterObj} setFilterObj={setFilterObj} setFilter={setFilter}></Header>
 				<Routes>
 					<Route path="/" element={<Home setLoginVisible={setLoginVisible} filterObj={filterObj} filter={filter} setFilter={setFilter}></Home>}></Route>
-					<Route path="/offer/:id" element={<Offer></Offer>}></Route>
-					<Route path="/publish" element={<Publish token={token}></Publish>}></Route>
+					<Route path="/offer/:id" element={<Offer setLoginVisible={setLoginVisible}></Offer>}></Route>
+					<Route path="/publish" element={<Publish token={token} setLoginVisible={setLoginVisible}></Publish>}></Route>
+					<Route path="/payment" element={<Payment token={token}></Payment>}></Route>
 				</Routes>
 				<Footer></Footer>
 				{/* Modals */}

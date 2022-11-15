@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useForm } from 'react-hook-form';
@@ -6,12 +6,30 @@ import { useNavigate } from 'react-router-dom';
 
 import { useDropzone } from 'react-dropzone';
 
-const Publish = () => {
+const HandleToken = ({ setLoginVisible }) => {
+	useEffect(() => {
+		document.body.className = 'body-modal';
+		setLoginVisible(true);
+	}, [setLoginVisible]);
+
+	return (
+		<>
+			<section className="unlogged-publish-wrapper">
+				<div className="unlogged-publish">
+					<div>Vous devez être connecté pour pouvoir publier une offre</div>
+				</div>
+			</section>
+		</>
+	);
+};
+
+const Publish = ({ setLoginVisible }) => {
 	const navigate = useNavigate();
 
 	const [loadedImage, setLoadedImage] = useState([]);
 	const [pictures, setPictures] = useState([]);
 	const { register, handleSubmit } = useForm();
+	const token = Cookies.get('token');
 
 	const onDrop = useCallback(
 		(acceptedFiles) => {
@@ -86,7 +104,7 @@ const Publish = () => {
 		}
 	};
 
-	return (
+	return token ? (
 		<>
 			<div className="background-publish-wrapper">
 				<section className="publish-wrapper">
@@ -175,6 +193,8 @@ const Publish = () => {
 				</section>
 			</div>
 		</>
+	) : (
+		<HandleToken setLoginVisible={setLoginVisible}></HandleToken>
 	);
 };
 

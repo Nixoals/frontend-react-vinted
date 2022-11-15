@@ -1,11 +1,16 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
 import axios from 'axios';
-const Offer = () => {
+const Offer = ({ setLoginVisible }) => {
 	const { id } = useParams();
 
 	const [isLoading, setIsLoading] = useState(true);
 	const [data, setData] = useState();
+	const navigate = useNavigate();
+	const token = Cookies.get('token');
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -49,7 +54,18 @@ const Offer = () => {
 								</div>
 							</div>
 						</div>
-						<button>Acheter</button>
+						<button
+							onClick={() => {
+								if (token) {
+									navigate('/payment', { state: { offerID: id } });
+								} else {
+									document.body.className = 'body-modal';
+									setLoginVisible(true);
+								}
+							}}
+						>
+							Acheter
+						</button>
 					</div>
 				</section>
 			</div>

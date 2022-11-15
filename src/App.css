@@ -10,6 +10,7 @@
 @import url('./pages/HomeStyle.css');
 @import url('./pages/UserFormStyle.css');
 @import url('./pages/PublishOfferStyle.css');
+@import url('./pages/PaymentStyle.css');
 
 :root{
     --main-primary-color:#007782; 
@@ -122,6 +123,7 @@ header{
 }
 
 .filter-price{
+    cursor: pointer;
     height: 20px;
     min-width: 42px;
     border-radius: 20px;

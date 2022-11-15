@@ -12,6 +12,34 @@
     --main-gray: #757575;
 }
 
+.unlogged-publish-wrapper{
+    display: flex;
+    align-items: flex-start;
+    height: calc(100vh - 120px);
+    background-color:#F2F2F2;
+}
+
+.unlogged-publish{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    width: 400px;
+    margin: 24px auto;
+    
+    font-size: 24px;
+    color: var(--main-primary-color);
+    background-color: white;
+    border: solid 1px var(--main-primary-color);
+    border-radius: 4px;
+}
+.unlogged-publish div{
+    display: flex;
+    padding: 24px;
+    justify-content: center;
+    margin: 0 24px;
+}
+
 
 input[type="file"] {
     display: none;

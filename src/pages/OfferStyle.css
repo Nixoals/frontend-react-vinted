@@ -20,6 +20,7 @@
 }
 
 .single-offer-wrapper button{
+    cursor: pointer;
     color: white;
     background-color: var(--main-primary-color);
     border: none;
