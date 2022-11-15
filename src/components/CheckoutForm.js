@@ -32,7 +32,7 @@ const CheckoutForm = ({ id, userId, setLoader }) => {
 			stripeToken,
 		};
 
-		const response = await axios.post('http://localhost:8080/pay', data, config);
+		const response = await axios.post('https://site--vinted-backend--gsmxcbzt8tzm.code.run/pay', data, config);
 		console.log(response.data.status, response.data.offer);
 
 		if (response.data.status === 'succeeded') {
