@@ -52,11 +52,13 @@ const Home = ({ setLoginVisible, filterObj, filter, setFilter }) => {
 	useEffect(() => {
 		const fetchData = async () => {
 			const newFilterObj = [...filterObj];
+
 			const url = `https://site--vinted-backend--gsmxcbzt8tzm.code.run/offer`;
 			// const url = `http://localhost:8080/offer`;
 
 			const response = await axios.get(url, { params: newFilterObj[0] });
 			const data = response.data;
+			newFilterObj.count = data.count;
 
 			setData(data);
 			setIsLoading(false);

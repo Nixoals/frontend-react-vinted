@@ -63,7 +63,7 @@ const RangeSet = ({ values, setValues, handlePriceRange }) => {
 							borderRadius: '50%',
 						}}
 					>
-						<div style={{ position: 'absolute', top: '-30px', backgroundColor: '#007782', outline: 'none', borderRadius: '4px', color: 'white', fontSize: '12px', padding: '4px', height: '23px', width: 'auto' }}>{values[index].toFixed(0)}€</div>
+						<div style={{ position: 'absolute', top: '-25px', backgroundColor: '#007782', outline: 'none', borderRadius: '4px', color: 'white', fontSize: '10px', padding: '4px', height: '23px', width: 'auto' }}>{values[index].toFixed(0)}€</div>
 						<div
 							style={{
 								height: '15px',

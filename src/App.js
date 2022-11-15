@@ -52,7 +52,7 @@ function App() {
 			<Router>
 				<Header handleToken={handleToken} setLoginVisible={setLoginVisible} setSignupVisible={setSignupVisible} filterObj={filterObj} setFilterObj={setFilterObj} setFilter={setFilter}></Header>
 				<Routes>
-					<Route path="/" element={<Home setLoader={setLoader} setLoginVisible={setLoginVisible} filterObj={filterObj} filter={filter} setFilter={setFilter}></Home>}></Route>
+					<Route path="/" element={<Home setLoader={setLoader} setLoginVisible={setLoginVisible} setFilterObj={setFilterObj} filterObj={filterObj} filter={filter} setFilter={setFilter}></Home>}></Route>
 					<Route path="/offer/:id" element={<Offer setLoginVisible={setLoginVisible}></Offer>}></Route>
 					<Route path="/publish" element={<Publish setLoader={setLoader} token={token} setLoginVisible={setLoginVisible} setPublishedOffer={setPublishedOffer}></Publish>}></Route>
 					<Route path="/payment" element={<Payment setLoader={setLoader} userId={userId} token={token}></Payment>}></Route>

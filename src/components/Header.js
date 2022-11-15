@@ -18,6 +18,7 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 	const [orderPrice, setOrderPrice] = useState(true);
 	const [range, setRange] = useState([10, 100]);
 	const [menuOpen, setMenuOpen] = useState(false);
+	const [limit, setLimit] = useState(1000);
 
 	const navigate = useNavigate();
 
@@ -42,9 +43,17 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 	};
 
 	//Search items based on their title
-	const handleFilterTitle = async (title) => {
+	const handleFilterTitle = (title) => {
 		const newFilterObj = [...filterObj];
 		newFilterObj[0].title = title;
+		setFilterObj(newFilterObj);
+		setFilter(true);
+	};
+
+	const handleLimite = (limit) => {
+		setLimit(limit);
+		const newFilterObj = [...filterObj];
+		newFilterObj[0].resultNumber = limit;
 		setFilterObj(newFilterObj);
 		setFilter(true);
 	};
@@ -95,6 +104,18 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 								<div className={'slider-range'}>
 									<RangeSet values={range} setValues={setRange} handlePriceRange={handlePriceRange}></RangeSet>
 								</div>
+								<div className="limit-result">
+									<div className="results">Results</div>
+									<input
+										onChange={(event) => {
+											handleLimite(event.target.value);
+										}}
+										min={1}
+										max={50}
+										type="number"
+										value={limit}
+									/>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -142,6 +163,7 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 											<button
 												onClick={() => {
 													if (token) {
+														handleCloseMenu();
 														navigate('/publish');
 													} else {
 														handleCloseMenu();
