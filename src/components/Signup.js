@@ -21,7 +21,7 @@ const Signup = ({ handleToken, setSignupVisible, setLoginVisible }) => {
 			} else if (!confirmTerms) {
 				return setAlerte("Veuillez accepter les conditions d'utilisation");
 			} else if (password !== confirmPassword) {
-				return setAlerte('Confirmation de mot de passe différent');
+				return setAlerte('Les mots de passe sont différent!');
 			} else if (username && email && password) {
 				const url = 'https://site--vinted-backend--gsmxcbzt8tzm.code.run/user/signup';
 				// const url = 'http://localhost:4000/user/signup';

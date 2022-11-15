@@ -298,3 +298,16 @@ margin: 20px 0;
     border: none;
     z-index: 10;
 }
+
+.missing-input{
+    color:red;
+    font-family: "Bw Modelica";
+    font-weight: 600;
+    
+}
+
+.missing-input input::placeholder{
+    color: red;
+    font-family: "Bw Modelica";
+    font-weight: 600;
+}

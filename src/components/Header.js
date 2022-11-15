@@ -18,7 +18,7 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 	const [orderPrice, setOrderPrice] = useState(true);
 	const [range, setRange] = useState([10, 100]);
 	const [menuOpen, setMenuOpen] = useState(false);
-	const [limit, setLimit] = useState(1000);
+	const [limit, setLimit] = useState('');
 
 	const navigate = useNavigate();
 
@@ -114,6 +114,7 @@ const Header = ({ handleToken, setLoginVisible, setSignupVisible, filterObj, set
 										max={50}
 										type="number"
 										value={limit}
+										placeholder={'..max'}
 									/>
 								</div>
 							</div>

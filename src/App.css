@@ -188,6 +188,7 @@ header{
 .limit-result input{
     border: solid 1px var(--main-primary-color);
     border-radius: 4px;
+    width: 40px;
 }
 
 .burger-menu{

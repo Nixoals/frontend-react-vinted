@@ -25,7 +25,11 @@ const HandleToken = ({ setLoginVisible }) => {
 const Publish = ({ setLoginVisible, setPublishedOffer, setLoader }) => {
 	const [loadedImage, setLoadedImage] = useState([]);
 	const [pictures, setPictures] = useState([]);
-	const { register, handleSubmit } = useForm();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
 	const token = Cookies.get('token');
 
 	const onDrop = useCallback(
@@ -145,9 +149,9 @@ const Publish = ({ setLoginVisible, setPublishedOffer, setLoader }) => {
 					</div>
 					<form onSubmit={handleSubmit(handleSubmitOffer)}>
 						<div className="offer-container">
-							<div>
+							<div className={errors.title ? 'missing-input' : 'normal'}>
 								<h2>Titre</h2>
-								<input {...register('title')} type="text" placeholder="ex: Chemise Sézane verte" />
+								<input {...register('title', { required: true })} type="text" placeholder="ex: Chemise Sézane verte" />
 							</div>
 							<div>
 								<h2>Décris ton article</h2>
@@ -171,15 +175,15 @@ const Publish = ({ setLoginVisible, setPublishedOffer, setLoader }) => {
 								<h2>Etat</h2>
 								<input {...register('condition')} type="text" placeholder="ex: Neuf avec étiquette" />
 							</div>
-							<div>
+							<div className={errors.city ? 'missing-input' : 'normal'}>
 								<h2>Lieu</h2>
-								<input {...register('city')} type="text" placeholder="ex: Paris" />
+								<input {...register('city', { required: true })} type="text" placeholder="ex: Paris" />
 							</div>
 						</div>
 						<div className="price-offer-container">
-							<div>
+							<div className={errors.price ? 'missing-input' : 'normal'}>
 								<h2>Prix</h2>
-								<input {...register('price')} type="number" min="1" placeholder="0,00 €" />
+								<input {...register('price', { required: true })} type="number" min="1" placeholder="0,00 €" />
 							</div>
 							<div className="exchange-checkbox">
 								<div>
