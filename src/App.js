@@ -17,12 +17,15 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Footer from './components/Footer';
 import Payment from './pages/Payment';
+import OfferPublished from './components/OfferPublished';
 
 //Main App
 function App() {
 	const [token, setToken] = useState(Cookies.get('token') || null);
 	const [loginVisible, setLoginVisible] = useState(false);
 	const [signupVisible, setSignupVisible] = useState(false);
+	const [publishedOffer, setPublishedOffer] = useState(false);
+
 	const [filter, setFilter] = useState(false);
 	const [filterObj, setFilterObj] = useState([{ title: '', priceMin: null, priceMax: null, sort: 'price-asc', page: 1, resultNumber: 1000 }]);
 
@@ -43,11 +46,13 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home setLoginVisible={setLoginVisible} filterObj={filterObj} filter={filter} setFilter={setFilter}></Home>}></Route>
 					<Route path="/offer/:id" element={<Offer setLoginVisible={setLoginVisible}></Offer>}></Route>
-					<Route path="/publish" element={<Publish token={token} setLoginVisible={setLoginVisible}></Publish>}></Route>
+					<Route path="/publish" element={<Publish token={token} setLoginVisible={setLoginVisible} setPublishedOffer={setPublishedOffer}></Publish>}></Route>
 					<Route path="/payment" element={<Payment token={token}></Payment>}></Route>
 				</Routes>
 				<Footer></Footer>
 				{/* Modals */}
+
+				{publishedOffer && <OfferPublished setPublishedOffer={setPublishedOffer}></OfferPublished>}
 				{loginVisible && <Login handleToken={handleToken} setLoginVisible={setLoginVisible} setSignupVisible={setSignupVisible}></Login>}
 				{signupVisible && <Signup handleToken={handleToken} setSignupVisible={setSignupVisible} setLoginVisible={setLoginVisible}></Signup>}
 			</Router>

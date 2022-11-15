@@ -1,15 +1,14 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 
 import CheckoutForm from '../components/CheckoutForm';
-//custom appearance element card
+const stripePromise = loadStripe('pk_test_51M4MCzHTRmDc4m32Tx72yLK6JZzwzCB7neMvSMszsXqKDzjWqgL5nqmkqlFpeSkwVDTSlyjTsdisqMwqLHGs65zZ00hFHW31ME');
 
 const Payment = () => {
-	const stripePromise = loadStripe('pk_test_51M4MCzHTRmDc4m32Tx72yLK6JZzwzCB7neMvSMszsXqKDzjWqgL5nqmkqlFpeSkwVDTSlyjTsdisqMwqLHGs65zZ00hFHW31ME');
-
 	const [isLoading, setIsLoading] = useState(true);
 	const [data, setData] = useState();
 	const location = useLocation();

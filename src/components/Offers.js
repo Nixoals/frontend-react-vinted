@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import avatar from '../assets/images/avatar.png';
 
 const Offers = ({ item }) => {
-	const { owner, product_details, product_image, product_price, _id } = item;
+	const { owner, product_details, product_image, product_price, _id, sold } = item;
 	// console.log(owner.account.username, owner.account.avatar);
 
 	return (
@@ -15,6 +15,7 @@ const Offers = ({ item }) => {
 				</div>
 				<Link to={`/offer/${_id}`}>
 					<div className="item-image-product">
+						<div className={sold ? 'sold-item' : 'not-solded-item'}>Vendu</div>
 						<img src={product_image.secure_url} alt="product"></img>
 					</div>
 				</Link>

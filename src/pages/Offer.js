@@ -27,7 +27,9 @@ const Offer = ({ setLoginVisible }) => {
 			<div className="single-offer-background">
 				<section className="single-offer-wrapper">
 					<div className="single-offer-image">
-						<img src={data.product_image.secure_url} alt="product"></img>
+						<div>
+							<img src={data.product_image.secure_url} alt="product"></img>
+						</div>
 					</div>
 
 					<div className="single-offer-description">
@@ -54,18 +56,30 @@ const Offer = ({ setLoginVisible }) => {
 								</div>
 							</div>
 						</div>
-						<button
-							onClick={() => {
-								if (token) {
-									navigate('/payment', { state: { offerID: id } });
-								} else {
-									document.body.className = 'body-modal';
-									setLoginVisible(true);
-								}
-							}}
-						>
-							Acheter
-						</button>
+
+						{!data.sold ? (
+							<button
+								onClick={() => {
+									if (token) {
+										navigate('/payment', { state: { offerID: id } });
+									} else {
+										document.body.className = 'body-modal';
+										setLoginVisible(true);
+									}
+								}}
+							>
+								Acheter
+							</button>
+						) : (
+							<button
+								onClick={() => {
+									navigate('/');
+								}}
+								className="product-sold"
+							>
+								Produit vendu
+							</button>
+						)}
 					</div>
 				</section>
 			</div>

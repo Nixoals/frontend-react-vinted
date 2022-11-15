@@ -2,7 +2,6 @@ import { useState, useCallback, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 
 import { useDropzone } from 'react-dropzone';
 
@@ -23,9 +22,7 @@ const HandleToken = ({ setLoginVisible }) => {
 	);
 };
 
-const Publish = ({ setLoginVisible }) => {
-	const navigate = useNavigate();
-
+const Publish = ({ setLoginVisible, setPublishedOffer }) => {
 	const [loadedImage, setLoadedImage] = useState([]);
 	const [pictures, setPictures] = useState([]);
 	const { register, handleSubmit } = useForm();
@@ -98,7 +95,9 @@ const Publish = ({ setLoginVisible }) => {
 
 			const response = await axios.post(url, formData, config);
 			console.log(response.data);
-			navigate('/');
+			document.body.classList.toggle('body-modal');
+			setPublishedOffer(true);
+			// navigate('/');
 		} catch (error) {
 			console.log(error.message);
 		}
