@@ -16,7 +16,7 @@ const OfferPublished = ({ setPublishedOffer }) => {
 					>
 						X
 					</button>
-					<div>Félicitation vous venez de bublier une offre</div>
+					<div>Félicitation, vous venez de bublier une offre</div>
 				</div>
 			</div>
 		</>
